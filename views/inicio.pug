@@ -1,0 +1,32 @@
+extends ./layout/app
+
+block contenido
+    div(class="py-5")
+        h1(class="text-center text-4xl font-extrabold") Productos
+
+        section(class='py-5')
+            h2(class="text-center text-4xl font-extrabold pt-10 ") Laptops
+            //-pre= JSON.stringify(laptops, undefined, 2)
+            if laptops.length
+                div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-14")
+                    each producto in laptops
+                        include ./templates/cardLaptop
+            else
+                p(class="text-center text-gray-800 text-sm py-10") No hay Resultados
+        section(class='py-5')
+            h2(class="text-center text-4xl font-extrabold pt-10 ") Telefonos    
+            if telefonos.length
+                div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-14")
+                    each producto in telefonos
+                        include ./templates/cardTyT    
+            else        
+                p(class="text-center text-gray-800 text-sm py-10") No hay Resultados
+        section(class='py-5')
+            h2(class="text-center text-4xl font-extrabold pt-10 ") Tablets
+            if tablets.length
+                div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-14")
+                    each producto in tablets
+                        include ./templates/cardTyT
+            else 
+                p(class="text-center text-gray-800 text-sm py-10") No hay Resultados
+block scripts
