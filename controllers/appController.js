@@ -1,4 +1,3 @@
-import { Sequelize } from 'sequelize'
 import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda } from '../models/index.js'
 import Componente from '../models/Componente.js'
 
@@ -135,11 +134,11 @@ const compararLaptops = async (req, res) => {
     const [memoriaRamL1, memoriaRamL2] = await Promise.all([
         Componente.findAll({
             raw: true,
-            where: { nombre: laptops[0].memoriaRam}
+            where: { nombre: laptops[0].memoriaRam , tipo:'memoria ram'}
         }),
         Componente.findAll({
             raw: true,
-            where: { nombre: laptops[1].memoriaRam}
+            where: { nombre: laptops[1].memoriaRam, tipo:'memoria ram'}
         })
     ])
 
@@ -268,11 +267,11 @@ const compararTelefonos = async (req, res) => {
   const [memoriaRamT1, memoriaRamT2] = await Promise.all([
     Componente.findAll({
         raw: true,
-        where: { nombre: telefonos[0].memoriaRam}
+        where: { nombre: telefonos[0].memoriaRam, tipo:'memoria ram'}
     }),
     Componente.findAll({
         raw: true,
-        where: { nombre: telefonos[1].memoriaRam}
+        where: { nombre: telefonos[1].memoriaRam, tipo:'memoria ram'}
     })
   ]) 
 
@@ -411,11 +410,11 @@ const compararTablets = async (req, res) => {
     const [memoriaRamT1, memoriaRamT2] = await Promise.all([
       Componente.findAll({
           raw: true,
-          where: { nombre: tablets[0].memoriaRam}
+          where: { nombre: tablets[0].memoriaRam, tipo:'memoria ram'}
       }),
       Componente.findAll({
           raw: true,
-          where: { nombre: tablets[1].memoriaRam}
+          where: { nombre: tablets[1].memoriaRam, tipo:'memoria ram'}
       })
     ]) 
   

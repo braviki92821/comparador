@@ -2,7 +2,7 @@
 const telefonos = [
     {
         nombre: 'Smartphone Motorola Edge 30 128GB 8RAM Azul Motorola Motorola Edge 30 128GB 8RAM Azul',
-        procesador: 'Qualcomm Snapdragon 778G+',
+        procesador: 'Qualcomm Snapdragon 778G',
         memoriaRam: '8GB',
         almacenamiento: '128GB',
         bateria: 5000,
@@ -34,10 +34,10 @@ const telefonos = [
     },
     {
         nombre: 'Smartphone Galaxy A54 Dual sim 128GB 8RAM Graphite Samsung Galaxy galaxy A54 5G 128',
-        procesador: '2 GHz Octa-Core',
+        procesador: 'Qualcomm Snapdragon 632',
         memoriaRam: '8GB',
         almacenamiento: '128GB',
-        bateria: 4020,
+        bateria: 4000,
         camaraF: '32 MPX',
         camaraT: '12 MPX',
         precio: 6278,
@@ -82,7 +82,7 @@ const telefonos = [
     },
     {
         nombre: 'Smartphone OnePlus 10 Pro 5G NE2213 Dual SIM 256GB 12GB RAM GSM',
-        procesador: 'Qualcomm Snapdragon SM8450',
+        procesador: 'Qualcomm Snapdragon 855',
         memoriaRam: '12GB',
         almacenamiento: '256GB',
         bateria: 5000,

@@ -1151,14 +1151,24 @@ const componentes = [
         valor: 9
     },
     {
-        nombre: '5000',
+        nombre: '3000',
         tipo: 'bateria laptop',
         valor: 5
     },
     {
-        nombre: '6000',
+        nombre: '4000',
         tipo: 'bateria laptop',
         valor: 6
+    },
+    {
+        nombre: '5000',
+        tipo: 'bateria laptop',
+        valor: 6
+    },
+    {
+        nombre: '6000',
+        tipo: 'bateria laptop',
+        valor: 7
     },
     {
         nombre: '7000',
@@ -1168,17 +1178,17 @@ const componentes = [
     {
         nombre: '8000',
         tipo: 'bateria laptop',
-        valor: 8
+        valor: 7
     },
     {
         nombre: '9000',
         tipo: 'bateria laptop',
-        valor: 9
+        valor: 8
     },
     {
         nombre: '10000',
         tipo: 'bateria laptop',
-        valor: 9
+        valor: 8
     },
     {
         nombre: '11000',
@@ -1506,7 +1516,7 @@ const componentes = [
         valor: 3
     },
     {
-        nombre: 'Intel UHD Graphics 64EU',
+        nombre: 'Intel UHD Graphics',
         tipo: 'grafica',
         valor: 3
     },
@@ -1521,40 +1531,691 @@ const componentes = [
         valor: 2
     },
     {
-        nombre: 'Qualcomm Snapdragon 778G+',
+        nombre: 'Apple A17 Pro',
         tipo: 'procesador telefono',
-        valor: 6
+        valor: 10
     },
     {
-        nombre: 'Qualcomm Snapdragon 685',
+        nombre: 'MediaTek Dimensity 9200 Plus',
         tipo: 'procesador telefono',
-        valor: 8
+        valor: 10
     },
     {
-        nombre: '2 GHz Octa-Core',
-        tipo: 'procesador telefono',
-        valor: 4
-    },
-    {
-        nombre: 'MediaTek Dimensity 1080',
+        nombre: 'Apple A16 Bionic',
         tipo: 'procesador telefono',
         valor: 9
-    },
-    {
-        nombre: 'Qualcomm Snapdragon 695',
-        tipo: 'procesador telefono',
-        valor: 6
-    },
-    {
-        nombre: 'Qualcomm Snapdragon SM8450',
-        tipo: 'procesador telefono',
-        valor: 8
     },
     {
         nombre: '16GB',
         tipo: 'almacenamiento telefono',
         valor: 6
     },
+    {
+        nombre: 'Qualcomm Snapdragon 8 Gen 2',
+        tipo: 'procesador telefono',
+        valor: 9
+    },
+    {
+        nombre: 'MediaTek Dimensity 9200',
+        tipo: 'procesador telefono',
+        valor: 9
+    },
+    {
+        nombre: 'Apple A15 Bionic',
+        tipo: 'procesador telefono',
+        valor: 9
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 8 Gen 1',
+        tipo: 'procesador telefono',
+        valor: 9
+    },
+    {
+        nombre: 'MediaTek Dimensity 9000 Plus',
+        tipo: 'procesador telefono',
+        valor: 8
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 7 Plus Gen 2',
+        tipo: 'procesador telefono',
+        valor: 8
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 8 Plus Gen 1',
+        tipo: 'procesador telefono',
+        valor: 8
+    },
+    {
+        nombre: 'Apple A14 Bionic',
+        tipo: 'procesador telefono',
+        valor: 8
+    },
+    {
+        nombre: 'MediaTek Dimensity 9000',
+        tipo: 'procesador telefono',
+        valor: 8
+    },
+    {
+        nombre: 'Samsung Exynos 2200',
+        tipo: 'procesador telefono',
+        valor: 7
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 888 Plus',
+        tipo: 'procesador telefono',
+        valor: 7
+    },
+    {
+        nombre: 'Samsung Exynos 2100',
+        tipo: 'procesador telefono',
+        valor: 7
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 888',
+        tipo: 'procesador telefono',
+        valor: 7
+    },
+    {
+        nombre: 'MediaTek Dimensity 8200',
+        tipo: 'procesador telefono',
+        valor: 7
+    },
+    {
+        nombre: 'Apple A13 Bionic',
+        tipo: 'procesador telefono',
+        valor: 7
+    },
+    {
+        nombre: 'MediaTek Dimensity 8100',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 870',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 1100',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 865 Plus',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 7200 Ultra',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 8020',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 8050',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 7200',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 865',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 1300',
+        tipo: 'procesador telefono',
+        valor: 6
+    },
+    {
+        nombre: 'MediaTek Dimensity 1200',
+        tipo: 'procesador telefono',
+        valor: 6
+    },   
+    {
+        nombre: 'Samsung Exynos 990',
+        tipo: 'procesador telefono',
+        valor: 5
+    },   
+    {
+        nombre: 'Qualcomm Snapdragon 7 Gen 1',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 782G',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'MediaTek Dimensity 1000 Plus',
+        tipo: 'procesador telefono',
+        valor: 5
+    },  
+    {
+        nombre: 'Apple A12',
+        tipo: 'procesador telefono',
+        valor: 5
+    },  
+    {
+        nombre: 'Qualcomm Snapdragon 7s Gen 2',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 778G Plus',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Samsung Exynos 9820',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 855',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 780G',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 860',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Samsung Exynos 9825',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 6 Gen 1',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Samsung Exynos 1380',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 778G',
+        tipo: 'procesador telefono',
+        valor: 5
+    },
+    {
+        nombre: 'MediaTek Dimensity 1050',
+        tipo: 'procesador telefono',
+        valor: 5
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 7050',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 1080',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 7030',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 920',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 855 Plus',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'MediaTek Dimensity 7020',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 930',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 900',
+        tipo: 'procesador telefono',
+        valor: 4
+    }, 
+    {
+        nombre: 'MediaTek Dimensity 820',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Samsung Exynos 1280',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 4 Gen 2',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Samsung Exynos 1330',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'MediaTek Dimensity 6080',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 695',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Samsung Exynos 9810',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'MediaTek Dimensity 810',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 750G',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Samsung Exynos 980',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 845',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'MediaTek Dimensity 6100 Plus',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 4 Gen 1',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'Apple A11 Bionic',
+        tipo: 'procesador telefono',
+        valor: 4
+    },
+    {
+        nombre: 'MediaTek Dimensity 6020',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Helio G99',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 732G',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Dimensity 800U',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Dimensity 720',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 765G',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 480 Plus',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Dimensity 700',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Helio G95',
+        tipo: 'procesador telefono',
+        valor: 3
+    },  
+    {
+        nombre: 'Qualcomm Snapdragon 690',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 720G',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 480',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Helio G90T',
+        tipo: 'procesador telefono',
+        valor: 3
+    },  
+    {
+        nombre: 'Qualcomm Snapdragon 685',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Helio G96',
+        tipo: 'procesador telefono',
+        valor: 3
+    },  
+    {
+        nombre: 'Qualcomm Snapdragon 730G',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 680',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 730',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Apple A10 Fusion',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 835',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Helio P90',
+        tipo: 'procesador telefono',
+        valor: 3
+    }, 
+    {
+        nombre: 'Samsung Exynos 8895',
+        tipo: 'procesador telefono',
+        valor: 3
+    }, 
+    {
+        nombre: 'MediaTek Helio P95',
+        tipo: 'procesador telefono',
+        valor: 3
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 678',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 712',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 675',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 710',
+        tipo: 'procesador telefono',
+        valor: 3
+    },
+    {
+        nombre: 'MediaTek Helio G88',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'MediaTek Helio G85',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio G80',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 821',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Samsung Exynos 850',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio G70',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Samsung Exynos 9611',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Apple A9',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Samsung Exynos 9609',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 665',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 670',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 662',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'MediaTek Helio P70',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Samsung Exynos 9610',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio P65',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio G37',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 460',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'MediaTek Helio P60',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 820',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 660',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Samsung Exynos 8890',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio G36',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio G35',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Samsung Exynos 7904',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 636',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio P35',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 632',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio G25',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'MediaTek Helio A22',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'MediaTek Helio A25',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Samsung Exynos 7884B',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Samsung Exynos 7420',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Samsung Exynos 7885',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 439',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'MediaTek Helio P22',
+        tipo: 'procesador telefono',
+        valor: 2
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 630',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 450',
+        tipo: 'procesador telefono',
+        valor: 2
+    }, 
+    {
+        nombre: 'Samsung Exynos 7880',
+        tipo: 'procesador telefono',
+        valor: 1
+    }, 
+    {
+        nombre: 'Qualcomm Snapdragon 625',
+        tipo: 'procesador telefono',
+        valor: 1
+    }, 
+    {
+        nombre: 'Samsung Exynos 7870',
+        tipo: 'procesador telefono',
+        valor: 1
+    },
+    {
+        nombre: 'Qualcomm Snapdragon 430',
+        tipo: 'procesador telefono',
+        valor: 1
+    }, 
+    {
+        nombre: 'MediaTek MT6737',
+        tipo: 'procesador telefono',
+        valor: 1
+    },
+     
     {
         nombre: '32GB',
         tipo: 'almacenamiento telefono',
@@ -1578,47 +2239,47 @@ const componentes = [
     {
         nombre: '4 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 4
     },
     {
         nombre: '5 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 5
     },
     {
         nombre: '6 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 5
     },
     {
         nombre: '8 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 6
     },
     {
         nombre: '10 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 7
     },
     {
         nombre: '13 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 7
     },
     {
         nombre: '16 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 8
     },
     {
         nombre: '20 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 8
     },
     {
         nombre: '32 MPX',
         tipo: 'camara frontal',
-        valor: 10
+        valor: 9
     },
     {
         nombre: '48 MPX',

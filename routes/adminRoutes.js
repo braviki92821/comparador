@@ -1,9 +1,11 @@
 import express  from "express";
 import { body } from 'express-validator'
-import { crearLaptop, guardarlaptop, agregarImagenLaptop, almacenarImagenLaptop, crearTelefono, guardarTelefono, agregarImagenTelefono,almacenarImagenTelefono, crearTablet, guardarTablet, agregarImagenTablet, almacenarImagenTablet } from "../controllers/adminController.js";
+import { adminLaptops, crearLaptop, guardarlaptop, agregarImagenLaptop, almacenarImagenLaptop, editarLaptop, actualizarLaptop, crearTelefono, guardarTelefono, agregarImagenTelefono,almacenarImagenTelefono, crearTablet, guardarTablet, agregarImagenTablet, almacenarImagenTablet } from "../controllers/adminController.js";
 import upload from "../middleware/subirImagen.js"
 
 const router = express.Router()
+
+router.get('/admin/admimistrarLaptops', adminLaptops)
 
 router.get('/admin/agregarLaptop', crearLaptop)
 router.post('/admin/agregarLaptop', 
@@ -22,6 +24,8 @@ router.post('/admin/agregarLaptop',
 
 router.get('/admin/agregar-imagen-laptop/:id', agregarImagenLaptop)
 router.post('/admin/agregar-imagen-laptop/:id', upload.single('imagen'), almacenarImagenLaptop)
+
+router.get('/admin/editarLaptop/:id', editarLaptop)
 
 router.get('/admin/agregarTelefono', crearTelefono)
 router.post('/admin/agregarTelefono', 

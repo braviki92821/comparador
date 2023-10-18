@@ -18,7 +18,7 @@ const laptops = [
     {
         nombre:'Laptop Gamer HP Victus 15-fb0122la AMD Ryzen 5 Nvidia GTX-1650 8GB RAM 512GB SSD',
         procesador: 'AMD Ryzen 5 5600H',
-        grafica: 'Nvidia GTX-1650',
+        grafica: 'Nvidia GTX 1650',
         memoriaRam: '8GB',
         almacenamiento: '512GB SSD',
         bateria: 5000,
@@ -66,7 +66,7 @@ const laptops = [
     {
         nombre:'Laptop Gamer Asus ROG ZEPHYRUS Ryzen 7 GeForce RTX 3060 16GB 512GB SSD',
         procesador: 'AMD Ryzen 7 5800H',
-        grafica: 'Radeon Vega 10',
+        grafica: 'Nvidia RTX 3060',
         memoriaRam: '16GB',
         almacenamiento: '512GB SSD',
         bateria: 5000,
@@ -97,7 +97,7 @@ const laptops = [
     },
     {
         nombre:'Laptop Dell Vostro 3400 14P Intel Core i3-1135G7 8GB RAM 1TB DD',
-        procesador: 'Intel Core i3-1115 G4',
+        procesador: 'Intel Core i3-1115G4',
         grafica: 'Intel UHD Graphics',
         memoriaRam: '8GB',
         almacenamiento: '1TB HDD',
@@ -113,7 +113,7 @@ const laptops = [
     },
     {
         nombre:'Laptop Gaming Lenovo Legion 5 15IMH05H Intel Core i5 Gen 10th 8GB RAM 1TB DD más 128GB SSD',
-        procesador: 'Intel Core i5-10515 G4',
+        procesador: 'Intel Core i5-1035G4',
         grafica: 'Nvidia GTX 1660Ti',
         memoriaRam: '8GB',
         almacenamiento: '128GB SSD + 1TB HDD',
@@ -129,7 +129,7 @@ const laptops = [
     },
     {
         nombre:'Laptop HP Pavilion 15-eg0513la Procesador Intel Core i5 8GB RAM, 512GB SSD',
-        procesador: 'Intel Core i5-10515 G4',
+        procesador: 'Intel Core i5-1035G4',
         grafica: 'Intel Iris Xe Graphics 80EU',
         memoriaRam: '8GB',
         almacenamiento: '512GB SSD',
@@ -145,7 +145,7 @@ const laptops = [
     },
     {
         nombre:'Laptop HP 14-dq2531la Intel Core i3 16GB RAM 512GB SSD',
-        procesador: 'Intel Core i3-1115 G4',
+        procesador: 'Intel Core i3-1115G4',
         grafica: 'Intel Graphics',
         memoriaRam: '16GB',
         almacenamiento: '512GB SSD',
@@ -161,7 +161,7 @@ const laptops = [
     },
     {
         nombre:'Laptop Dell Intel Core i5 5ta Generación 8gb Ram 240gb Disco Solido SSD HDMI WiFi Cámara Dell Latitude E5450',
-        procesador: 'Intel Core i5-5200u',
+        procesador: 'Intel Core i5-6200U',
         grafica: 'Intel Graphics',
         memoriaRam: '8GB',
         almacenamiento: '256GB SSD',
@@ -190,7 +190,8 @@ const laptops = [
         sistemaOperativoId: 3,
         marcasLaptopId: 6,
         tiendaId: 2
-    }  
+    }
+
     ]
     
 export default laptops;

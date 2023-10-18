@@ -3,7 +3,7 @@ import db from '../config/db.js'
 
 const Componente = db.define('componentes',{
     nombre:{
-        type: DataTypes.STRING(30),
+        type: DataTypes.STRING(100),
         allowNull:false
     },
     tipo: {

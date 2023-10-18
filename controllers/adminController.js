@@ -3,6 +3,52 @@ import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda } from '../model
 import { validationResult } from "express-validator";
 import Componente from '../models/Componente.js'
 
+const adminLaptops = async (req, res) => {
+    const { pagina: paginaActual } = req.query;
+
+    const exp = /^[0-9]$/;
+  
+    if (!exp.test(paginaActual)) {
+      return res.redirect("/admin/admimistrarLaptops?pagina=1");
+    }
+
+    try {
+
+      let limite = 5;
+    
+      const offset = paginaActual * limite - limite;
+
+      const [laptops, total] = await Promise.all([
+        await Laptop.findAll({
+            limit: limite,
+            offset,
+            include:[
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaL, as:'marcasLaptop' },
+                { model: Tienda, as:'tienda'}
+            ]
+        }),
+        Laptop.count()
+      ])
+     
+      res.render('admin/laptops',{
+          pagina: 'Administrar Laptops',
+          laptops,
+          csrfToken: req.csrfToken(),
+          paginas: Math.ceil(total / limite),
+          paginaActual: Number(paginaActual),
+          total,
+          offset,
+          limite
+      })
+        
+    } catch (error) {
+       console.log(error);
+    }
+
+
+}
+
 const crearLaptop = async (req, res) => {
 
     const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -42,7 +88,7 @@ const guardarlaptop = async (req, res) => {
 
     if (!resultado.isEmpty()) {
         const [ sistemas, marcas, tiendas] = await Promise.all([
-            SO.findAll(),
+            SO.findAll(), //select * from sistemas where campo=s
             MarcaL.findAll(),
             Tienda.findAll()
         ])
@@ -98,7 +144,7 @@ const guardarlaptop = async (req, res) => {
     
         const { id } = laptopGuardada
         
-        res.redirect(`/admin/agregar-imagen/${id}`);
+        res.redirect(`/admin/agregar-imagen-laptop/${id}`);
 
     } catch (error) {
         console.log(error)
@@ -141,11 +187,57 @@ const almacenarImagenLaptop = async (req, res) => {
 
       await laptop.save()
 
-      res.redirect('/admin/agregarLaptop')
+      res.redirect('/admin/admimistrarLaptops')
 
     }catch(error){
         console.log(error)
     }
+}
+
+const editarLaptop = async (req, res) => {
+    const { id } = req.params;
+
+    const laptop = await Laptop.findByPk(id)
+
+    if(!laptop){
+        return res.redirect('/admin/admimistrarLaptops')
+    }
+
+    const [ sistemas, marcas, tiendas] = await Promise.all([
+        SO.findAll(),
+        MarcaL.findAll(),
+        Tienda.findAll()
+    ])
+
+    const [ procesadores, graficas, memoriasRam, almacenamientos, baterias, interfaces] = await Promise.all([
+        Componente.findAll({ where:{ tipo: 'procesador' } }),
+        Componente.findAll({ where:{ tipo: 'grafica' } }),
+        Componente.findAll({ where:{ tipo: 'memoria ram' } }),
+        Componente.findAll({ where:{ tipo: 'almacenamiento laptop' } }),
+        Componente.findAll({ where:{ tipo: 'bateria laptop' } }),
+        Componente.findAll({ where:{ tipo: 'interfaz' } }),
+    ])
+
+    res.render('admin/editarLaptop',{
+        pagina: 'Editar laptop',
+        csrfToken: req.csrfToken(),
+        sistemas,
+        marcas,
+        tiendas,
+        procesadores,
+        graficas,
+        memoriasRam,
+        almacenamientos,
+        baterias,
+        interfaces,
+        datos: laptop
+    })
+
+    
+}
+
+const actualizarLaptop = async (req, res) => {
+
 }
 
 const crearTelefono  = async (req, res) => {
@@ -435,10 +527,13 @@ const almacenarImagenTablet = async (req, res) => {
 }
 
 export {
+    adminLaptops,
     crearLaptop,
     guardarlaptop,
     agregarImagenLaptop,
     almacenarImagenLaptop,
+    editarLaptop,
+    actualizarLaptop,
     crearTelefono,
     guardarTelefono,
     agregarImagenTelefono,
