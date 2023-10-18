@@ -26,7 +26,7 @@ block contenido
                                 p(class="text-sm text-gray-500 font-bold")= `$${laptop.precio}`
                             div(class="sm:w-1/4 md:w-2/6 lg:w-1/6 flex flex-col 2xl:flex-row gap-2 ")
 
-                                button(type="button" data-laptop-id=`${laptop.id}` class=`cambiar-estado w-full px-2 py-2 md:py-1 text-xs leading-5 font-semibold rounded cursor-pointer ${laptop.oferta ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-red-800'}`) oferta
+                                button(type="button" data-laptop-id=`${laptop.id}` class=`cambiar-estado w-full px-2 py-2 md:py-1 text-xs leading-5 font-semibold rounded cursor-pointer ${laptop.oferta ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-red-800'}`)= `${laptop.oferta ? 'oferta' : 'sin oferta'}`
 
                                 a(href=`/admin/editarLaptop/${laptop.id}` class="text-center w-full px-2 py-2 md:py-1 text-xs leading-5 font-semibold rounded cursor-pointer bg-indigo-100 text-indigo-800") Editar
                                 form(method="POST" action=`/admin/eliminarLaptop/${laptop.id}`)
@@ -48,4 +48,4 @@ block contenido
                                     a(href=`/admin/admimistrarLaptops?pagina=${n}` class=`${paginaActual == n ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{n++}
 
         else
-           p.text-center No hay Propiedades
+           p.text-center No hay Laptops

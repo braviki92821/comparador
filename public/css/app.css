@@ -1066,6 +1066,10 @@ video {
     width: 50%;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
   .md\:items-center {
     align-items: center;
   }

@@ -175,22 +175,22 @@ const laptops = [
         marcasLaptopId: 2,
         tiendaId: 1
     }, 
-    {
-        nombre:'Laptop Lenovo Ideapad 5 14ALC05 R5 8G 256G 11S',
-        procesador: 'AMD Ryzen 5 5500U',
-        grafica: 'AMD Radeon Graphics',
-        memoriaRam: '8GB',
-        almacenamiento: '256GB SSD',
-        bateria: 5000,
-        interfaz: 'PCI-express',
-        precio: 10399,
-        imagen: '00019637840066l.jpg',
-        oferta: false,
-        descuento: 0,
-        sistemaOperativoId: 3,
-        marcasLaptopId: 6,
-        tiendaId: 2
-    }
+    // {
+    //     nombre:'Laptop Lenovo Ideapad 5 14ALC05 R5 8G 256G 11S',
+    //     procesador: 'AMD Ryzen 5 5500U',
+    //     grafica: 'AMD Radeon Graphics',
+    //     memoriaRam: '8GB',
+    //     almacenamiento: '256GB SSD',
+    //     bateria: 5000,
+    //     interfaz: 'PCI-express',
+    //     precio: 10399,
+    //     imagen: '00019637840066l.jpg',
+    //     oferta: false,
+    //     descuento: 0,
+    //     sistemaOperativoId: 3,
+    //     marcasLaptopId: 6,
+    //     tiendaId: 2
+    // }
 
     ]
     
