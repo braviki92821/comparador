@@ -1,4 +1,3 @@
-import categorias from "./categorias.js";
 import sistemas from "./sistemas.js";
 import marcaLaptops from "./marcalaptops.js";
 import marcaTyTs from "./marcaTyT's.js";

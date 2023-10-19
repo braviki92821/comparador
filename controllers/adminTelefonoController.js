@@ -6,7 +6,7 @@ import Componente from '../models/Componente.js'
 const adminTelefonos = async (req, res) => {
     const { pagina: paginaActual } = req.query;
 
-    const exp = /^[0-9]$/;
+    const exp = /^[0-9]+$/;
   
     if (!exp.test(paginaActual)) {
       return res.redirect("/admin/admimistrarTelefonos?pagina=1");
@@ -233,7 +233,7 @@ const editarTelefono = async (req, res) => {
     })
 }
 
-const actualizartelefono = async (req, res) => {
+const actualizarTelefono = async (req, res) => {
     let resultado = validationResult(req);
 
     if(!resultado.isEmpty()){
@@ -322,7 +322,7 @@ const eliminarTelefono = async (req, res) => {
     await unlink(`public/uploads/${telefono.imagen}`);
 
     console.log(`se elimino: ${telefono.imagen}`);
-    await laptop.destroy();
+    await telefono.destroy();
     res.redirect("/admin/admimistrarTelefonos");
 }
 
@@ -334,6 +334,6 @@ export {
     agregarImagenTelefono,
     almacenarImagenTelefono,
     editarTelefono,
-    actualizartelefono,
+    actualizarTelefono,
     eliminarTelefono
 }

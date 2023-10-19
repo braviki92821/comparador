@@ -3,6 +3,51 @@ import { Tablet, SO, MarcaTyT, Tienda } from '../models/index.js'
 import { validationResult } from "express-validator";
 import Componente from '../models/Componente.js'
 
+const adminTablets = async (req, res) => {
+    const { pagina: paginaActual } = req.query;
+
+    const exp = /^[0-9]+$/;
+  
+    if (!exp.test(paginaActual)) {
+      return res.redirect("/admin/admimistrarTablets?pagina=1");
+    }
+
+    try {
+
+      let limite = 5;
+    
+      const offset = paginaActual * limite - limite;
+
+      const [tablets, total] = await Promise.all([
+        await Tablet.findAll({
+            limit: limite,
+            offset,
+            include:[
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaTyT, as:'marcastyt' },
+                { model: Tienda, as:'tienda'}
+            ]
+        }),
+        Tablet.count()
+      ])
+     
+      res.render('admin/tablets',{
+          pagina: 'Administrar Tablets',
+          tablets,
+          csrfToken: req.csrfToken(),
+          paginas: Math.ceil(total / limite),
+          paginaActual: Number(paginaActual),
+          total,
+          offset,
+          limite
+      })
+        
+    } catch (error) {
+       console.log(error);
+    }
+
+}
+
 const crearTablet = async (req, res) => {
     const [ sistemas, marcas, tiendas] = await Promise.all([
         SO.findAll(),
@@ -57,7 +102,7 @@ const guardarTablet = async (req, res) => {
             Componente.findAll({ where: { tipo: 'interfaz' } }),
         ])
         
-        return res.render('admin/crearTelefono',{
+        return res.render('admin/crearTablet',{
             pagina: 'Añadir Tablet',
             csrfToken: req.csrfToken(),
             sistemas,
@@ -139,16 +184,155 @@ const almacenarImagenTablet = async (req, res) => {
 
       await tablet.save()
 
-      res.redirect('/admin/agregarTablet')
+      res.redirect('/admin/admimistrarTablets')
 
     }catch(error){
         console.log(error)
     }    
 }
 
+const editarTablet = async (req, res) => {
+    const { id } = req.params;
+
+    const tablet = await Tablet.findByPk(id)
+
+    if(!tablet){
+        return res.redirect('/admin/admimistrarTablets')
+    }
+
+    const [ sistemas, marcas, tiendas] = await Promise.all([
+        SO.findAll(),
+        MarcaTyT.findAll(),
+        Tienda.findAll()
+    ])
+
+    const [ procesadores, camarasF, camarasT,memoriasRam, almacenamientos, baterias, interfaces] = await Promise.all([
+        Componente.findAll({ where: { tipo: 'procesador telefono' } }),
+        Componente.findAll({ where: { tipo: 'camara frontal' } }),
+        Componente.findAll({ where: { tipo: 'camara trasera' } }),
+        Componente.findAll({ where: { tipo: 'memoria ram' } }),
+        Componente.findAll({ where: { tipo: 'almacenamiento telefono' } }),
+        Componente.findAll({ where: { tipo: 'bateria laptop' } }),
+        Componente.findAll({ where: { tipo: 'interfaz' } }),
+    ])
+
+    res.render('admin/editarTablet',{
+        pagina: 'Editar Tablet',
+        csrfToken: req.csrfToken(),
+        sistemas,
+        marcas,
+        tiendas,
+        procesadores,
+        camarasF,
+        camarasT,
+        memoriasRam,
+        almacenamientos,
+        baterias,
+        interfaces,
+        datos: tablet
+    })
+}
+
+const actualizarTablet = async (req, res) => {
+    let resultado = validationResult(req);
+
+    if(!resultado.isEmpty()){
+        const [ sistemas, marcas, tiendas] = await Promise.all([
+            SO.findAll(),
+            MarcaTyT.findAll(),
+            Tienda.findAll()
+        ])
+    
+        const [ procesadores, camarasF, camarasT,memoriasRam, almacenamientos, baterias, interfaces] = await Promise.all([
+            Componente.findAll({ where: { tipo: 'procesador telefono' } }),
+            Componente.findAll({ where: { tipo: 'camara frontal' } }),
+            Componente.findAll({ where: { tipo: 'camara trasera' } }),
+            Componente.findAll({ where: { tipo: 'memoria ram' } }),
+            Componente.findAll({ where: { tipo: 'almacenamiento telefono' } }),
+            Componente.findAll({ where: { tipo: 'bateria laptop' } }),
+            Componente.findAll({ where: { tipo: 'interfaz' } }),
+        ])
+
+        return res.render('admin/editarTablet',{
+            pagina: 'Editar Tablet',
+            csrfToken: req.csrfToken(),
+            sistemas,
+            marcas,
+            tiendas,
+            procesadores,
+            camarasF,
+            camarasT,
+            memoriasRam,
+            almacenamientos,
+            baterias,
+            interfaces,
+            datos: req.body,
+            errores: resultado.array()
+        })
+    }
+
+    const { id } = req.params;
+
+    const tablet = await Tablet.findByPk(id)
+  
+    if(!tablet){
+       return res.redirect('/admin/admimistrarTablets')
+    }
+
+    try {
+
+       const {nombre, procesador, camaraF, camaraT, memoriaRam, 
+        almacenamiento, bateria, precio, oferta, descuento, sistema: sistemaOperativoId,
+        marca: marcastytId, tienda: tiendaId} = req.body
+
+        tablet.set({
+            nombre,
+            procesador,
+            memoriaRam,
+            almacenamiento,
+            bateria,
+            camaraF,
+            camaraT,
+            precio,
+            oferta: Boolean(Number(oferta)),
+            descuento,
+            sistemaOperativoId,
+            marcastytId,
+            tiendaId
+        })
+
+        tablet.save()
+
+        res.redirect('/admin/admimistrarTablets')
+    
+    } catch (error) {
+       console.log(error) 
+    }
+}
+
+const eliminarTablet = async (req, res) => {
+    const { id } = req.params;  
+
+    const tablet = await Tablet.findByPk(id)
+
+    if(!tablet){
+       return res.redirect('/admin/admimistrarTablets')
+    }
+
+    await unlink(`public/uploads/${tablet.imagen}`);
+
+    console.log(`se elimino: ${tablet.imagen}`);
+    await tablet.destroy();
+    res.redirect("/admin/admimistrarTablets");
+}
+
 export {
+    adminTablets,
     crearTablet,
     guardarTablet,
     agregarImagenTablet,
-    almacenarImagenTablet
+    almacenarImagenTablet,
+    editarTablet,
+    actualizarTablet,
+    eliminarTablet
 }

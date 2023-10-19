@@ -1,12 +1,12 @@
 import { unlink } from "node:fs/promises";
-import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda } from '../models/index.js'
+import { Laptop, SO, MarcaL, Tienda } from '../models/index.js'
 import { validationResult } from "express-validator";
 import Componente from '../models/Componente.js'
 
 const adminLaptops = async (req, res) => {
     const { pagina: paginaActual } = req.query;
 
-    const exp = /^[0-9]$/;
+    const exp = /^[0-9]+$/;
   
     if (!exp.test(paginaActual)) {
       return res.redirect("/admin/admimistrarLaptops?pagina=1");

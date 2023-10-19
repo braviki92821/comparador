@@ -47,7 +47,9 @@ const laptops = async (req, res) => {
   const { pagina: paginaActual } = req.query;
   console.log(paginaActual);
 
-  const exp = /^[0-9]$/;
+  const exp = /^[0-9]+$/;
+
+  console.log(exp.test(paginaActual))
 
   if (!exp.test(paginaActual)) {
     return res.redirect("/laptops?pagina=1");
@@ -191,7 +193,7 @@ const telefonos = async (req, res) => {
     const { pagina: paginaActual } = req.query;
     console.log(paginaActual);
   
-    const exp = /^[0-9]$/;
+    const exp = /^[0-9]+$/;
   
     if (!exp.test(paginaActual)) {
       return res.redirect("/telefonos?pagina=1");
@@ -335,7 +337,7 @@ const tablets = async (req, res) => {
     const { pagina: paginaActual } = req.query;
     console.log(paginaActual);
   
-    const exp = /^[0-9]$/;
+    const exp = /^[0-9]+$/;
   
     if (!exp.test(paginaActual)) {
       return res.redirect("/tablets?pagina=1");
