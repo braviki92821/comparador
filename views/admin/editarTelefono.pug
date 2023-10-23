@@ -92,20 +92,20 @@ block contenido
                    div(class="md:flex md:gap-4 space-y-5 md:space-y-0") 
 
                         div(class="md:w-1/3 ")
-                            label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="sistema") Sistema Operativo
-                            select#sistema.w-full.px-3.py-2.border.border-gray-600.rounded-md.placeholder-gray-400(name="sistema")
+                            label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="sistemaOperativoId") Sistema Operativo
+                            select#sistemaOperativoId.w-full.px-3.py-2.border.border-gray-600.rounded-md.placeholder-gray-400(name="sistemaOperativoId")
                              option(value="") - Seleccione -
                              each sistema in sistemas
                                 option(value=sistema.id selected= datos.sistemaOperativoId? datos.sistemaOperativoId == sistema.id ? true : false : null)= sistema.nombre
                         div(class="md:w-1/3 ")
-                            label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="marca") Marca
-                            select#marca.w-full.px-3.py-2.border.border-gray-600.rounded-md.placeholder-gray-400(name="marca")
+                            label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="marcastytId") Marca
+                            select#marcastytId.w-full.px-3.py-2.border.border-gray-600.rounded-md.placeholder-gray-400(name="marcastytId")
                              option(value="") - Seleccione
                              each marca in marcas
                                 option(value=marca.id selected= datos.marcastytId ? datos.marcastytId == marca.id ? true : false : null)= marca.nombre                    
                         div(class="md:w-1/3 ")
-                            label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="tienda") tienda
-                            select#tienda.w-full.px-3.py-2.border.border-gray-600.rounded-md.placeholder-gray-400(name="tienda")
+                            label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold(for="tiendaId") tienda
+                            select#tiendaId.w-full.px-3.py-2.border.border-gray-600.rounded-md.placeholder-gray-400(name="tiendaId")
                              option(value="") - Seleccione  
                              each tienda in tiendas
                                 option(value=tienda.id selected= datos.tiendaId ? datos.tiendaId == tienda.id  ? true : false : null)= tienda.nombre                    

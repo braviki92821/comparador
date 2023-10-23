@@ -40,9 +40,9 @@ router.post('/admin/editarLaptop/:id',
             body('memoriaRam').notEmpty().withMessage('Seleccione cantidad de memoria ram'),
             body('almacenamiento').notEmpty().withMessage('Seleccione cantidad del almacenamiento'),
             body('bateria').notEmpty().withMessage('Seleccione bateria'),
-            body('sistema').isNumeric().withMessage('Seleccione sistema operativo'),
-            body('marca').isNumeric().withMessage('Seleccione marca'),
-            body('tienda').isNumeric().withMessage('Seleccione tienda'),
+            body('sistemaOperativoId').isNumeric().withMessage('Seleccione sistema operativo'),
+            body('marcasLaptopId').isNumeric().withMessage('Seleccione marca'),
+            body('tiendaId').isNumeric().withMessage('Seleccione tienda'),
             actualizarLaptop)       
             
 router.post('/admin/eliminarLaptop/:id', eliminarLaptop)
@@ -79,9 +79,9 @@ router.post('/admin/editarTelefono/:id',
             body('memoriaRam').notEmpty().withMessage('Seleccione cantidad de memoria ram'),
             body('almacenamiento').notEmpty().withMessage('Seleccione cantidad del almacenamiento'),
             body('bateria').notEmpty().withMessage('Seleccione bateria'),
-            body('sistema').isNumeric().withMessage('Seleccione sistema operativo'),
-            body('marca').isNumeric().withMessage('Seleccione marca'),
-            body('tienda').isNumeric().withMessage('Seleccione tienda'),
+            body('sistemaOperativoId').isNumeric().withMessage('Seleccione sistema operativo'),
+            body('marcastytId').isNumeric().withMessage('Seleccione marca'),
+            body('tiendaId').isNumeric().withMessage('Seleccione tienda'),
             actualizarTelefono)
 
 router.post('/admin/eliminarTelefono/:id', eliminarTelefono)
@@ -118,9 +118,9 @@ router.post('/admin/editarTablet/:id',
             body('memoriaRam').notEmpty().withMessage('Seleccione cantidad de memoria ram'),
             body('almacenamiento').notEmpty().withMessage('Seleccione cantidad del almacenamiento'),
             body('bateria').notEmpty().withMessage('Seleccione bateria'),
-            body('sistema').isNumeric().withMessage('Seleccione sistema operativo'),
-            body('marca').isNumeric().withMessage('Seleccione marca'),
-            body('tienda').isNumeric().withMessage('Seleccione tienda'),
+            body('sistemaOperativoId').isNumeric().withMessage('Seleccione sistema operativo'),
+            body('marcastytId').isNumeric().withMessage('Seleccione marca'),
+            body('tiendaId').isNumeric().withMessage('Seleccione tienda'),
             actualizarTablet)
 
 router.post('/admin/eliminarTablet/:id', eliminarTablet)

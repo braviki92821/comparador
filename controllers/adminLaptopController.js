@@ -46,7 +46,6 @@ const adminLaptops = async (req, res) => {
        console.log(error);
     }
 
-
 }
 
 const crearLaptop = async (req, res) => {
@@ -149,7 +148,6 @@ const guardarlaptop = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-
 
 }
 
@@ -283,8 +281,8 @@ const actualizarLaptop = async (req, res) => {
   try {
  
     const { nombre, precio, procesador, grafica, interfaz, 
-        memoriaRam, almacenamiento, oferta, descuento, bateria,sistema: sistemaOperativoId,
-        marca: marcasLaptopId, tienda: tiendaId } = req.body
+        memoriaRam, almacenamiento, oferta, descuento, bateria, sistemaOperativoId,
+        marcasLaptopId, tiendaId } = req.body
 
     laptop.set({
         nombre, 

@@ -5,9 +5,9 @@ block contenido
         h2.text-center.text-2xl.font-extrabold= pagina 
 
         //-pre= JSON.stringify(promociones, undefined, 2)
-        if resultados.length
+        if promociones.length
             div(class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-14")
-                each producto in resultados
+                each producto in promociones
                     div(class="bg-white shadow rounded-lg")
                         img(class=" h-72 w-full" src=`/uploads/${producto.imagen}` alt=`${producto.imagen}`)
                         div(class="p-5 space-y-3")
@@ -24,6 +24,7 @@ block contenido
                               if producto.oferta
                                 del(class="text-gray-800 font-bold")= `$${producto.precio} `
                                 span(class="text-gray-800 font-bold")= ` / $${(producto.precio - (producto.precio / 100 )* producto.descuento)}`
+                                span(class="text-red-800")=` ${producto.descuento}% de descuento`
                               else
                                 span(class="text-gray-800 font-bold")= `$${producto.precio}`
                             p(class="text-sm text-gray-600") Tienda: 
@@ -31,4 +32,4 @@ block contenido
                             //-button(type="button" data-laptop-id=`${producto.id}` class="agregar-comparacion-laptop bg-indigo-600 w-full text-center block text-white p-2 uppercase rounded" name="agregar-comparacion") Agregar a la comparacion
 
         else 
-            p.text-center Sin resultados
+            p.text-center No Hay Promociones

@@ -1,3 +1,4 @@
+import { Sequelize } from 'sequelize'
 import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda } from '../models/index.js'
 import Componente from '../models/Componente.js'
 
@@ -39,6 +40,47 @@ const inicio = async (req, res) => {
         tablets,
         telefonos,
         csrfToken: req.csrfToken(),
+    })
+}
+
+const promociones = async (req, res) => {
+    const [ laptops, tablets, telefonos ] = await Promise.all([
+        Laptop.findAll({
+            where: { oferta: true },
+            limit: 5,
+            include: [
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaL, as:'marcasLaptop' },
+                { model: Tienda, as:'tienda'}
+            ],
+            order: [[ 'createdAt','DESC' ]]
+        }),
+        Tablet.findAll({
+            where: { oferta: true },
+            limit: 5,
+            include: [
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaTyT, as:'marcastyt' },
+                { model: Tienda, as:'tienda'}
+            ],
+            order: [[ 'createdAt','DESC' ]]
+        }),
+        Telefono.findAll({
+            where: { oferta: true },
+            limit: 5,
+            include: [
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaTyT, as:'marcastyt' },
+                { model: Tienda, as:'tienda'}
+            ],
+            order: [[ 'createdAt','DESC' ]]
+        }),        
+    ])
+
+    res.render('promociones',{
+        pagina: 'Promociones',
+        csrfToken: req.csrfToken(),
+        promociones: laptops.concat(telefonos).concat(tablets)
     })
 }
 
@@ -484,12 +526,56 @@ const noEncontrado = (req, res) => {
 }
 
 const buscador = async (req, res) => {
+    const {termino} = req.body
 
+    if(!termino.trim()){
+      return res.redirect('back')
+    }
+
+    const [ laptops, tablets, telefonos ] = await Promise.all([
+        Laptop.findAll({
+            where: { nombre: { [Sequelize.Op.like] : '%' + termino + '%' } },
+            limit: 6,
+            include: [
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaL, as:'marcasLaptop' },
+                { model: Tienda, as:'tienda'}
+            ],
+            order: [[ 'createdAt','DESC' ]]
+        }),
+        Tablet.findAll({
+            where: { nombre: { [Sequelize.Op.like] : '%' + termino + '%' } },
+            limit: 6,
+            include: [
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaTyT, as:'marcastyt' },
+                { model: Tienda, as:'tienda'}
+            ],
+            order: [[ 'createdAt','DESC' ]]
+        }),
+        Telefono.findAll({
+            where: { nombre: { [Sequelize.Op.like] : '%' + termino + '%' } },
+            limit: 6,
+            include: [
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaTyT, as:'marcastyt' },
+                { model: Tienda, as:'tienda'}
+            ],
+            order: [[ 'createdAt','DESC' ]]
+        }),        
+    ])
+
+    res.render('buscador',{
+        pagina: 'Resultados de la busqueda',
+        resultados: laptops.concat(telefonos).concat(tablets),
+        csrfToken: req.csrfToken(),
+    })
 }
 
 export {
     inicio,
     laptops,
+    promociones,
     compararLaptops,
     telefonos,
     compararTelefonos,

@@ -1,9 +1,11 @@
 import express  from "express";
-import { inicio, laptops, compararLaptops, telefonos, compararTelefonos, tablets, compararTablets, noEncontrado, buscador } from '../controllers/appController.js'
+import { inicio, promociones, laptops, compararLaptops, telefonos, compararTelefonos, tablets, compararTablets, noEncontrado, buscador } from '../controllers/appController.js'
 
 const router = express.Router()
 
 router.get('/',inicio)
+
+router.get('/promociones', promociones)
 
 router.get('/laptops', laptops)
 

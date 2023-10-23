@@ -15,6 +15,8 @@ const formularioRegistro = (req, res) => {
     });
   };
 
+  
+
 export {
     formularioLogin,
     formularioRegistro
