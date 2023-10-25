@@ -31,7 +31,10 @@ block contenido
                                 span(class="text-gray-800 font-bold")= `$${producto.precio}`
                             p(class="text-sm text-gray-600") Tienda: 
                                 span(class="text-gray-800 font-bold")= producto.tienda.nombre
-                            button(type="button" data-tablet-id=`${producto.id}` class="agregar-comparacion-tablet bg-indigo-600 w-full text-center block text-white p-2 uppercase rounded") Agregar a la comparacion
+                            if token
+                                button(type="button" class="comparacion bg-gray-600 w-full text-center block text-white p-2 uppercase rounded" name="comparacion") Agregar a la comparacion
+                            else
+                                button(type="button" data-laptop-id=`${producto.id}` class="agregar-comparacion-laptop bg-indigo-600 w-full text-center block text-white p-2 uppercase rounded" name="agregar-comparacion") Agregar a la comparacion
 
             div(class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6")
                 div(class="flex-1 flex justify-between sm:hidden")

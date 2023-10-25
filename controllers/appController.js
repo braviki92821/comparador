@@ -4,6 +4,8 @@ import Componente from '../models/Componente.js'
 
 const inicio = async (req, res) => {
 
+    const { _token } = req.cookies
+
     const [ laptops, tablets, telefonos ] = await Promise.all([
         Laptop.findAll({
             limit: 3,
@@ -40,10 +42,14 @@ const inicio = async (req, res) => {
         tablets,
         telefonos,
         csrfToken: req.csrfToken(),
+        token: _token === undefined || _token === ''
     })
 }
 
 const promociones = async (req, res) => {
+    
+    const { _token } = req.cookies
+
     const [ laptops, tablets, telefonos ] = await Promise.all([
         Laptop.findAll({
             where: { oferta: true },
@@ -80,18 +86,18 @@ const promociones = async (req, res) => {
     res.render('promociones',{
         pagina: 'Promociones',
         csrfToken: req.csrfToken(),
-        promociones: laptops.concat(telefonos).concat(tablets)
+        promociones: laptops.concat(telefonos).concat(tablets),
+        token: _token === undefined || _token === ''
     })
 }
 
 const laptops = async (req, res) => {
 
+  const { _token } = req.cookies
+
   const { pagina: paginaActual } = req.query;
-  console.log(paginaActual);
 
   const exp = /^[0-9]+$/;
-
-  console.log(exp.test(paginaActual))
 
   if (!exp.test(paginaActual)) {
     return res.redirect("/laptops?pagina=1");
@@ -124,7 +130,8 @@ const laptops = async (req, res) => {
         paginaActual: Number(paginaActual),
         total,
         offset,
-        limite
+        limite,
+        token: _token === undefined || _token === ''
     })
 
   } catch (error) {
@@ -133,6 +140,8 @@ const laptops = async (req, res) => {
 }
 
 const compararLaptops = async (req, res) => {
+
+    const { _token } = req.cookies
 
     const laptopsIds = req.cookies?.compararLaptop?.split(',')
 
@@ -228,12 +237,15 @@ const compararLaptops = async (req, res) => {
         almacenamiento: almacenamientoL1.concat(almacenamientoL2),
         baterias: bateriaL1.concat(bateriaL2),
         interfaces: interfazL1.concat(interfazL2),
+        token: _token === undefined || _token === ''
     })
 }
 
 const telefonos = async (req, res) => {
+    
+    const { _token } = req.cookies
+    
     const { pagina: paginaActual } = req.query;
-    console.log(paginaActual);
   
     const exp = /^[0-9]+$/;
   
@@ -267,7 +279,8 @@ const telefonos = async (req, res) => {
         paginaActual: Number(paginaActual),
         total,
         offset,
-        limite
+        limite,
+        token: _token === undefined || _token === ''
     })
 
     } catch (error) {
@@ -277,6 +290,8 @@ const telefonos = async (req, res) => {
 }
 
 const compararTelefonos = async (req, res) => {
+  
+  const { _token } = req.cookies
   
   const TelefonosIds = req.cookies?.compararTelefono?.split(',')
   
@@ -371,13 +386,16 @@ res.render('comparar/compararTelefono',{
     almacenamiento: almacenamientoT1.concat(almacenamientoT2),
     baterias: bateriaT1.concat(bateriaT2),
     camarasF: camaraFT1.concat(camaraFT2),
-    camarasT: camaraTT1.concat(camaraTT2)
+    camarasT: camaraTT1.concat(camaraTT2),
+    token: _token === undefined || _token === ''
 })
 }
 
 const tablets = async (req, res) => {
+    
+    const { _token } = req.cookies
+    
     const { pagina: paginaActual } = req.query;
-    console.log(paginaActual);
   
     const exp = /^[0-9]+$/;
   
@@ -411,7 +429,8 @@ const tablets = async (req, res) => {
             paginaActual: Number(paginaActual),
             total,
             offset,
-            limite
+            limite,
+            token: _token === undefined || _token === ''
         })
         
     } catch (error) {
@@ -421,6 +440,9 @@ const tablets = async (req, res) => {
 }
 
 const compararTablets = async (req, res) => {
+    
+    const { _token } = req.cookies
+    
     const TabletsIds = req.cookies?.compararTablet?.split(',')
   
     const [...tablets] = await Promise.all([
@@ -506,7 +528,7 @@ const compararTablets = async (req, res) => {
       })    
     ])
   
-  res.render('comparar/compararTablet',{
+    res.render('comparar/compararTablet',{
       pagina: 'Comparar Tablets',
       tablets,
       procesadores: procesadorT1.concat(procesadorT2),
@@ -514,18 +536,26 @@ const compararTablets = async (req, res) => {
       almacenamiento: almacenamientoT1.concat(almacenamientoT2),
       baterias: bateriaT1.concat(bateriaT2),
       camarasF: camaraFT1.concat(camaraFT2),
-      camarasT: camaraTT1.concat(camaraTT2)
-  })
+      camarasT: camaraTT1.concat(camaraTT2),
+      token: _token === undefined || _token === ''
+    })
 }
 
 const noEncontrado = (req, res) => {
+    
+    const { _token } = req.cookies
+    
     res.render('404',{
         pagina:'No Encontrado',
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(),
+        token: _token === undefined || _token === ''
     })
 }
 
 const buscador = async (req, res) => {
+    
+    const { _token } = req.cookies
+    
     const {termino} = req.body
 
     if(!termino.trim()){
@@ -569,6 +599,7 @@ const buscador = async (req, res) => {
         pagina: 'Resultados de la busqueda',
         resultados: laptops.concat(telefonos).concat(tablets),
         csrfToken: req.csrfToken(),
+        token: _token === undefined || _token === ''
     })
 }
 

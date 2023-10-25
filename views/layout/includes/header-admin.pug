@@ -6,4 +6,6 @@ header.bg-indigo-600.p-4
           a(href="/admin/admimistrarLaptops") Laptops
           a(href="/admin/admimistrarTelefonos") Telefonos
           a(href="/admin/admimistrarTablets") Tablets
-          a(href="#") Cerrar Sesion
+          form(action="/auth/cerrar-sesion" method="POST")
+              input(type="hidden" name="_csrf" value=csrfToken) 
+              input(type="submit" class="text-sm font-bold text-white cursor-pointer" value="Cerrar Sesion")  

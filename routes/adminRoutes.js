@@ -4,12 +4,13 @@ import { adminLaptops, crearLaptop, guardarlaptop, agregarImagenLaptop, almacena
 import { adminTelefonos, crearTelefono, guardarTelefono, agregarImagenTelefono, almacenarImagenTelefono, editarTelefono, actualizarTelefono, eliminarTelefono } from '../controllers/adminTelefonoController.js'
 import { adminTablets, crearTablet, guardarTablet, agregarImagenTablet, almacenarImagenTablet, editarTablet, actualizarTablet, eliminarTablet} from '../controllers/adminTabletController.js'
 import upload from "../middleware/subirImagen.js"
+import protegerRuta from '../middleware/protegerRuta.js';
 
 const router = express.Router()
 
-router.get('/admin/admimistrarLaptops', adminLaptops)
+router.get('/admin/admimistrarLaptops', protegerRuta, adminLaptops)
 
-router.get('/admin/agregarLaptop', crearLaptop)
+router.get('/admin/agregarLaptop', protegerRuta, crearLaptop)
 router.post('/admin/agregarLaptop', 
             body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
             body('precio').notEmpty().withMessage('Debe colocar un precio'),
@@ -22,12 +23,12 @@ router.post('/admin/agregarLaptop',
             body('sistema').isNumeric().withMessage('Seleccione sistema operativo'),
             body('marca').isNumeric().withMessage('Seleccione marca'),
             body('tienda').isNumeric().withMessage('Seleccione tienda'),
-            guardarlaptop)
+            protegerRuta, guardarlaptop)
 
-router.get('/admin/agregar-imagen-laptop/:id', agregarImagenLaptop)
-router.post('/admin/agregar-imagen-laptop/:id', upload.single('imagen'), almacenarImagenLaptop)
+router.get('/admin/agregar-imagen-laptop/:id', protegerRuta, agregarImagenLaptop)
+router.post('/admin/agregar-imagen-laptop/:id', protegerRuta, upload.single('imagen'), almacenarImagenLaptop)
 
-router.get('/admin/editarLaptop/:id', editarLaptop)
+router.get('/admin/editarLaptop/:id', protegerRuta, editarLaptop)
 
 router.post('/admin/editarLaptop/:id',
             body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
@@ -43,13 +44,13 @@ router.post('/admin/editarLaptop/:id',
             body('sistemaOperativoId').isNumeric().withMessage('Seleccione sistema operativo'),
             body('marcasLaptopId').isNumeric().withMessage('Seleccione marca'),
             body('tiendaId').isNumeric().withMessage('Seleccione tienda'),
-            actualizarLaptop)       
+            protegerRuta, actualizarLaptop)       
             
-router.post('/admin/eliminarLaptop/:id', eliminarLaptop)
+router.post('/admin/eliminarLaptop/:id', protegerRuta, eliminarLaptop)
 
-router.get('/admin/admimistrarTelefonos', adminTelefonos)
+router.get('/admin/admimistrarTelefonos', protegerRuta, adminTelefonos)
 
-router.get('/admin/agregarTelefono', crearTelefono)
+router.get('/admin/agregarTelefono', protegerRuta, crearTelefono)
 router.post('/admin/agregarTelefono', 
             body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
             body('precio').notEmpty().withMessage('Debe colocar un precio'),
@@ -62,12 +63,12 @@ router.post('/admin/agregarTelefono',
             body('sistema').isNumeric().withMessage('Seleccione sistema operativo'),
             body('marca').isNumeric().withMessage('Seleccione marca'),
             body('tienda').isNumeric().withMessage('Seleccione tienda'), 
-            guardarTelefono)
+            protegerRuta, guardarTelefono)
 
 router.get('/admin/agregar-imagen-telefono/:id', agregarImagenTelefono)
-router.post('/admin/agregar-imagen-telefono/:id', upload.single('imagen'), almacenarImagenTelefono)
+router.post('/admin/agregar-imagen-telefono/:id', protegerRuta, upload.single('imagen'), almacenarImagenTelefono)
 
-router.get('/admin/editarTelefono/:id', editarTelefono)
+router.get('/admin/editarTelefono/:id', protegerRuta, editarTelefono)
 router.post('/admin/editarTelefono/:id',
             body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
             body('precio').notEmpty().withMessage('Debe colocar un precio'),
@@ -82,13 +83,13 @@ router.post('/admin/editarTelefono/:id',
             body('sistemaOperativoId').isNumeric().withMessage('Seleccione sistema operativo'),
             body('marcastytId').isNumeric().withMessage('Seleccione marca'),
             body('tiendaId').isNumeric().withMessage('Seleccione tienda'),
-            actualizarTelefono)
+            protegerRuta, actualizarTelefono)
 
-router.post('/admin/eliminarTelefono/:id', eliminarTelefono)
+router.post('/admin/eliminarTelefono/:id', protegerRuta, eliminarTelefono)
 
-router.get('/admin/admimistrarTablets', adminTablets)
+router.get('/admin/admimistrarTablets', protegerRuta, adminTablets)
 
-router.get('/admin/agregarTablet', crearTablet)
+router.get('/admin/agregarTablet', protegerRuta, crearTablet)
 router.post('/admin/agregarTablet',             
              body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
              body('precio').notEmpty().withMessage('Debe colocar un precio'),
@@ -101,12 +102,12 @@ router.post('/admin/agregarTablet',
              body('sistema').isNumeric().withMessage('Seleccione sistema operativo'),
              body('marca').isNumeric().withMessage('Seleccione marca'),
              body('tienda').isNumeric().withMessage('Seleccione tienda'), 
-             guardarTablet )
+             protegerRuta, guardarTablet )
 
-router.get('/admin/agregar-imagen-tablet/:id', agregarImagenTablet)
-router.post('/admin/agregar-imagen-tablet/:id', upload.single('imagen'), almacenarImagenTablet)
+router.get('/admin/agregar-imagen-tablet/:id', protegerRuta, agregarImagenTablet)
+router.post('/admin/agregar-imagen-tablet/:id', protegerRuta, upload.single('imagen'), almacenarImagenTablet)
 
-router.get('/admin/editarTablet/:id', editarTablet)
+router.get('/admin/editarTablet/:id', protegerRuta, editarTablet)
 router.post('/admin/editarTablet/:id',
             body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
             body('precio').notEmpty().withMessage('Debe colocar un precio'),
@@ -121,9 +122,9 @@ router.post('/admin/editarTablet/:id',
             body('sistemaOperativoId').isNumeric().withMessage('Seleccione sistema operativo'),
             body('marcastytId').isNumeric().withMessage('Seleccione marca'),
             body('tiendaId').isNumeric().withMessage('Seleccione tienda'),
-            actualizarTablet)
+            protegerRuta, actualizarTablet)
 
-router.post('/admin/eliminarTablet/:id', eliminarTablet)
+router.post('/admin/eliminarTablet/:id', protegerRuta, eliminarTablet)
 
 
 export default router;

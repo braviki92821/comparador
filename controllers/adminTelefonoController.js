@@ -6,6 +6,10 @@ import Componente from '../models/Componente.js'
 const adminTelefonos = async (req, res) => {
     const { pagina: paginaActual } = req.query;
 
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const exp = /^[0-9]+$/;
   
     if (!exp.test(paginaActual)) {
@@ -49,6 +53,11 @@ const adminTelefonos = async (req, res) => {
 }
 
 const crearTelefono  = async (req, res) => {
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const [ sistemas, marcas, tiendas] = await Promise.all([
         SO.findAll(),
         MarcaTyT.findAll(),
@@ -84,6 +93,10 @@ const crearTelefono  = async (req, res) => {
 
 const guardarTelefono  = async (req, res) => {
     let resultado = validationResult(req);
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     if (!resultado.isEmpty()) {
         const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -156,6 +169,10 @@ const guardarTelefono  = async (req, res) => {
 const agregarImagenTelefono = async (req, res) => {
     const { id } = req.params;
 
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const telefono = await Telefono.findByPk(id)
    
     if(!telefono){
@@ -171,6 +188,10 @@ const agregarImagenTelefono = async (req, res) => {
 
 const almacenarImagenTelefono = async (req, res) => {
     const { id } = req.params;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const telefono = await Telefono.findByPk(id)
 
@@ -193,6 +214,10 @@ const almacenarImagenTelefono = async (req, res) => {
 
 const editarTelefono = async (req, res) => {
     const { id } = req.params;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const telefono = await Telefono.findByPk(id)
 
@@ -235,6 +260,10 @@ const editarTelefono = async (req, res) => {
 
 const actualizarTelefono = async (req, res) => {
     let resultado = validationResult(req);
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     if(!resultado.isEmpty()){
         const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -313,6 +342,10 @@ const actualizarTelefono = async (req, res) => {
 const eliminarTelefono = async (req, res) => {
     const { id } = req.params;  
 
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const telefono = await Telefono.findByPk(id)
 
     if(!telefono){
@@ -325,7 +358,6 @@ const eliminarTelefono = async (req, res) => {
     await telefono.destroy();
     res.redirect("/admin/admimistrarTelefonos");
 }
-
 
 export {
     adminTelefonos,

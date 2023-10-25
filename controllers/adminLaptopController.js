@@ -7,6 +7,10 @@ const adminLaptops = async (req, res) => {
     const { pagina: paginaActual } = req.query;
 
     const exp = /^[0-9]+$/;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
   
     if (!exp.test(paginaActual)) {
       return res.redirect("/admin/admimistrarLaptops?pagina=1");
@@ -50,6 +54,10 @@ const adminLaptops = async (req, res) => {
 
 const crearLaptop = async (req, res) => {
 
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const [ sistemas, marcas, tiendas] = await Promise.all([
         SO.findAll(),
         MarcaL.findAll(),
@@ -84,6 +92,10 @@ const crearLaptop = async (req, res) => {
 
 const guardarlaptop = async (req, res) => {
     let resultado = validationResult(req);
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     if (!resultado.isEmpty()) {
         const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -155,6 +167,10 @@ const agregarImagenLaptop = async (req, res) => {
   
  const { id } = req.params;
 
+ if(req.usuario.tipo !== 1){
+    return res.redirect("/");
+}
+
  const laptop = await Laptop.findByPk(id)
 
  if(!laptop){
@@ -172,6 +188,10 @@ const agregarImagenLaptop = async (req, res) => {
 const almacenarImagenLaptop = async (req, res) => {
     
     const { id } = req.params;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const laptop = await Laptop.findByPk(id)
 
@@ -194,6 +214,14 @@ const almacenarImagenLaptop = async (req, res) => {
 
 const editarLaptop = async (req, res) => {
     const { id } = req.params;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const laptop = await Laptop.findByPk(id)
 
@@ -236,6 +264,10 @@ const editarLaptop = async (req, res) => {
 
 const actualizarLaptop = async (req, res) => {
   let resultado = validationResult(req);
+
+  if(req.usuario.tipo !== 1){
+    return res.redirect("/");
+}
 
   if (!resultado.isEmpty()) {
     const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -311,7 +343,11 @@ const actualizarLaptop = async (req, res) => {
 }
 
 const eliminarLaptop = async (req, res) => {
-    const { id } = req.params;  
+    const { id } = req.params; 
+    
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    } 
 
     const laptop = await Laptop.findByPk(id)
 
@@ -325,7 +361,6 @@ const eliminarLaptop = async (req, res) => {
     await laptop.destroy();
     res.redirect("/admin/admimistrarLaptops");
 }
-
 
 export {
     adminLaptops,

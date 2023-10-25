@@ -2,6 +2,7 @@
     const agregarComparacion = document.querySelectorAll('.agregar-comparacion-laptop')
     const agregarComparacionT = document.querySelectorAll('.agregar-comparacion-telefono')
     const agregarComparacionTb = document.querySelectorAll('.agregar-comparacion-tablet')
+    const comparacion = document.querySelectorAll('.comparacion')
 
     const btnComparar = document.querySelector('#btn-back-to-top')
     //const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -9,6 +10,10 @@
     let compararLaptop= []
     let compararTelefono= []
     let compararTablet= []
+
+    comparacion.forEach(boton => {
+        boton.addEventListener('click', alerta)
+    })
 
     agregarComparacion.forEach(boton => {
         boton.addEventListener('click', agregarLaptop)
@@ -247,6 +252,10 @@
   
           })
         }        
+    }
+
+    function alerta(){
+        alert('Debes iniciar sesion para poder utilizar el comparador')
     }
 
 })()

@@ -23,8 +23,13 @@ nav(class="flex-no-wrap relative flex w-full items-center justify-between bg-[#F
                         input(type="text" id="termino" name="termino"  placeholder="Buscar Productos" class="p-1 shadow text-sm")
                         input(type="submit" value="Buscar" class="bg-indigo-800 rounded-lg hover:bg-indigo-400 text-white uppercase font-bold p-1 cursor-pointer text-sm")
         div(class="relative flex items-center"  data-te-dropdown-ref data-te-dropdown-alignment="end")
-            a(class="relative flex items-center lg:pr-2 text-sm font-bold text-white" href='/auth/login') Iniciar Sesion
-            a(class="relative flex items-center lg:pr-2 text-sm font-bold text-white" href='/auth/registro') Crear Cuenta
+            if token
+                a(class="relative flex items-center lg:pr-2 text-sm font-bold text-white" href='/auth/login') Iniciar Sesion
+                a(class="relative flex items-center lg:pr-2 text-sm font-bold text-white" href='/auth/registro') Crear Cuenta  
+            else
+                form(action="/auth/cerrar-sesion" method="POST")
+                    input(type="hidden" name="_csrf" value=csrfToken) 
+                    input(type="submit" class="text-sm font-bold relative flex items-center text-white lg:pr-2 cursor-pointer" value="Cerrar Sesion")         
 
 //- header.bg-gray-400.p-4
 //-     div.container.mx-auto.flex.justify-between.items-center

@@ -6,6 +6,10 @@ import Componente from '../models/Componente.js'
 const adminTablets = async (req, res) => {
     const { pagina: paginaActual } = req.query;
 
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const exp = /^[0-9]+$/;
   
     if (!exp.test(paginaActual)) {
@@ -49,6 +53,11 @@ const adminTablets = async (req, res) => {
 }
 
 const crearTablet = async (req, res) => {
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
+
     const [ sistemas, marcas, tiendas] = await Promise.all([
         SO.findAll(),
         MarcaTyT.findAll(),
@@ -84,6 +93,10 @@ const crearTablet = async (req, res) => {
 
 const guardarTablet = async (req, res) => {
     let resultado = validationResult(req);
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     if (!resultado.isEmpty()) {
         const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -155,6 +168,11 @@ const guardarTablet = async (req, res) => {
 
 const agregarImagenTablet = async (req, res) => {
     const { id } = req.params;
+    
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const tablet = await Tablet.findByPk(id)
    
@@ -170,7 +188,12 @@ const agregarImagenTablet = async (req, res) => {
 }
 
 const almacenarImagenTablet = async (req, res) => {
+    
     const { id } = req.params;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const tablet = await Tablet.findByPk(id)
 
@@ -193,6 +216,10 @@ const almacenarImagenTablet = async (req, res) => {
 
 const editarTablet = async (req, res) => {
     const { id } = req.params;
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const tablet = await Tablet.findByPk(id)
 
@@ -235,6 +262,10 @@ const editarTablet = async (req, res) => {
 
 const actualizarTablet = async (req, res) => {
     let resultado = validationResult(req);
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     if(!resultado.isEmpty()){
         const [ sistemas, marcas, tiendas] = await Promise.all([
@@ -312,6 +343,10 @@ const actualizarTablet = async (req, res) => {
 
 const eliminarTablet = async (req, res) => {
     const { id } = req.params;  
+
+    if(req.usuario.tipo !== 1){
+        return res.redirect("/");
+    }
 
     const tablet = await Tablet.findByPk(id)
 

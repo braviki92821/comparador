@@ -8,6 +8,8 @@ import laptops from "./laptops.js";
 import telefonos from "./telefonos.js"
 import Componente from "../models/Componente.js";
 import componentes from "./componentes.js";
+import Usuario from "../models/Usuario.js";
+import usuarios from "./usuarios.js";
 
 
 const importarDatos = async () => {
@@ -25,7 +27,8 @@ const importarDatos = async () => {
           Tienda.bulkCreate(tiendas),
           Laptop.bulkCreate(laptops),
           Telefono.bulkCreate(telefonos),
-          Componente.bulkCreate(componentes)
+          Componente.bulkCreate(componentes),
+          Usuario.bulkCreate(usuarios)
       ])
   
       console.log('Datos importados')
