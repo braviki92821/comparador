@@ -5,11 +5,11 @@ import db from './config/db.js'
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import appRoutes from './routes/appRoutes.js'
 import adminRoutes from './routes/adminRoutes.js'
-
+import copiaRoutes from './routes/copiaRoutes.js'
 
 const app = express()
 
-app.use( express.urlencoded({extended:true}) )
+app.use( express.urlencoded({extended:true}), express.json())
 
 const port = process.env.PORT || 2500
 
@@ -28,6 +28,7 @@ try{
 app.use('/auth', usuarioRoutes)
 app.use('/', appRoutes)
 app.use('/', adminRoutes)
+app.use('/backup', copiaRoutes)
 
 app.set('view engine', 'pug')
 app.set('views', './views')

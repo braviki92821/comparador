@@ -25,8 +25,8 @@ const importarDatos = async () => {
           MarcaL.bulkCreate(marcaLaptops),
           MarcaTyT.bulkCreate(marcaTyTs),
           Tienda.bulkCreate(tiendas),
-          Laptop.bulkCreate(laptops),
-          Telefono.bulkCreate(telefonos),
+          //Laptop.bulkCreate(laptops),
+          //Telefono.bulkCreate(telefonos),
           Componente.bulkCreate(componentes),
           Usuario.bulkCreate(usuarios)
       ])

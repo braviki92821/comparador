@@ -6,12 +6,12 @@ Dropzone.options.imagen = {
     dictDefaultMessage: 'Sube tus imagenes aqui',
     acceptedFiles: '.png, .jpg, .jpeg', 
     maxFilesize: 5,
-    maxFiles: 1,
-    parallelUploads: 1,
+    maxFiles: 1500,
+    parallelUploads: 1500,
     autoProcessQueue: false,
     addRemoveLinks: true,
     dictRemoveFile: 'Borrar Archivo',
-    dictMaxFilesExceeded: 'Limite es 1 archivo',
+    dictMaxFilesExceeded: 'Limite es 1500 archivos',
     headers:{
         'CSRF-Token': token
     },
@@ -26,7 +26,7 @@ Dropzone.options.imagen = {
 
         dropzone.on('queuecomplete', function(file, mensaje){
                 if(dropzone.getActiveFiles().length == 0){
-                    window.location.href = '/laptops'
+                    window.location.href = '/admin/admimistrarLaptops'
                 }
         })
     }

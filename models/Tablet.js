@@ -48,6 +48,14 @@ const Tablet = db.define('tablets',{
         defaultValue: 0  
     }   
     
+},{
+    scopes:{
+        eliminarCreatedUpdated:{
+            attributes:{
+            exclude:['createdAt','updatedAt' ]
+            }
+        }
+    }
 });
 
 export default Tablet

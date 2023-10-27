@@ -48,6 +48,14 @@ const Telefono = db.define('telefonos',{
         defaultValue: 0  
     }   
     
+},{
+    scopes:{
+        eliminarCreatedUpdated:{
+            attributes:{
+            exclude:['createdAt','updatedAt' ]
+            }
+        }
+    }
 });
 
 export default Telefono

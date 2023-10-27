@@ -7,8 +7,16 @@ block contenido
     div.py-10 
         h2.text-center.text-2xl.font-extrabold= pagina
 
-        a(href="/admin/agregarLaptop" class="rounded py bg-indigo-600 hover:bg-indigo-700 text-sm px-10 font-bold text-center text-white uppercase my-5 inline-block w-full sm:w-auto") Agregar laptop
-
+        a(href="/admin/agregarLaptop" class="rounded py bg-indigo-600 hover:bg-indigo-700 text-sm px-5 font-bold text-center text-white uppercase my-5 inline-block w-full sm:w-auto") Agregar laptop
+        button(type="button" class="copia-laptop rounded py ml-2 bg-indigo-600 hover:bg-indigo-700 text-sm px-5 font-bold text-center text-white uppercase my-5 inline-block w-full sm:w-auto") Crear Copia de seguridad
+        button(type="button" class="carga-laptop rounded py ml-2 bg-indigo-600 hover:bg-indigo-700 text-sm px-5 font-bold text-center text-white uppercase my-5 inline-block w-full sm:w-auto") Carga Masiva
+        a(href="/backup/imagenes" class="rounded py ml-2 bg-indigo-600 hover:bg-indigo-700 text-sm px-5 font-bold text-center text-white uppercase my-5 inline-block w-full sm:w-auto" ) Carga Masiva Imagenes
+            
+        p(class="hidden errores bg-red-700 text-black font-bold text-center") Error al cargar datos del archivo
+            a(class="font-bold text-black cursor-pointer")
+                u(class="error-detalles")    detalles
+        p(class="hidden correcto bg-green-500 text-black font-bold text-center") Se cargaron los datos correctamente recargue la pagina
+        p(class="hidden cargando bg-gray-500 text-black font-bold text-center") Cargando....
         //pre= JSON.stringify(laptops, undefined, 2)
 
         if laptops.length 
@@ -49,3 +57,6 @@ block contenido
 
         else
            p.text-center No hay Laptops
+block scripts
+    script(src="/js/copiaSeguridad.js") 
+    

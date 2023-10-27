@@ -47,6 +47,14 @@ const Laptop = db.define('laptops',{
         type: DataTypes.INTEGER,
         defaultValue: 0  
     }   
+},{
+    scopes:{
+        eliminarCreatedUpdated:{
+            attributes:{
+            exclude:['createdAt','updatedAt' ]
+            }
+        }
+    }
 });
 
 export default Laptop

@@ -19,14 +19,14 @@ eval("(function webpackUniversalModuleDefinition(root, factory) {\n\tif(true)\n\
 
 /***/ }),
 
-/***/ "./src/js/agregarImagen.js":
-/*!*********************************!*\
-  !*** ./src/js/agregarImagen.js ***!
-  \*********************************/
+/***/ "./src/js/cargaMasivaImagen.js":
+/*!*************************************!*\
+  !*** ./src/js/cargaMasivaImagen.js ***!
+  \*************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var dropzone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dropzone */ \"./node_modules/dropzone/dist/dropzone.js\");\n\r\n\r\nconst token = document.querySelector('meta[name=\"csrf-token\"]').getAttribute('content')\r\n\r\ndropzone__WEBPACK_IMPORTED_MODULE_0__.Dropzone.options.imagen = {\r\n    dictDefaultMessage: 'Sube tus imagenes aqui',\r\n    acceptedFiles: '.png, .jpg, .jpeg', \r\n    maxFilesize: 5,\r\n    maxFiles: 1,\r\n    parallelUploads: 1,\r\n    autoProcessQueue: false,\r\n    addRemoveLinks: true,\r\n    dictRemoveFile: 'Borrar Archivo',\r\n    dictMaxFilesExceeded: 'Limite es 1 archivo',\r\n    headers:{\r\n        'CSRF-Token': token\r\n    },\r\n    paramName: 'imagen',\r\n    init: function(){\r\n        const dropzone = this\r\n        const btnPublicar = document.querySelector('#publicar')\r\n\r\n        btnPublicar.addEventListener('click',function(){\r\n            dropzone.processQueue()\r\n        })\r\n\r\n        dropzone.on('queuecomplete', function(file, mensaje){\r\n                if(dropzone.getActiveFiles().length == 0){\r\n                    window.location.href = '/laptops'\r\n                }\r\n        })\r\n    }\r\n}\n\n//# sourceURL=webpack://comparador/./src/js/agregarImagen.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var dropzone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dropzone */ \"./node_modules/dropzone/dist/dropzone.js\");\n\r\n\r\nconst token = document.querySelector('meta[name=\"csrf-token\"]').getAttribute('content')\r\n\r\ndropzone__WEBPACK_IMPORTED_MODULE_0__.Dropzone.options.imagen = {\r\n    dictDefaultMessage: 'Sube tus imagenes aqui',\r\n    acceptedFiles: '.png, .jpg, .jpeg', \r\n    maxFilesize: 5,\r\n    maxFiles: 1500,\r\n    parallelUploads: 1500,\r\n    autoProcessQueue: false,\r\n    addRemoveLinks: true,\r\n    dictRemoveFile: 'Borrar Archivo',\r\n    dictMaxFilesExceeded: 'Limite es 1500 archivos',\r\n    headers:{\r\n        'CSRF-Token': token\r\n    },\r\n    paramName: 'imagen',\r\n    init: function(){\r\n        const dropzone = this\r\n        const btnPublicar = document.querySelector('#publicar')\r\n\r\n        btnPublicar.addEventListener('click',function(){\r\n            dropzone.processQueue()\r\n        })\r\n\r\n        dropzone.on('queuecomplete', function(file, mensaje){\r\n                if(dropzone.getActiveFiles().length == 0){\r\n                    window.location.href = '/admin/admimistrarLaptops'\r\n                }\r\n        })\r\n    }\r\n}\n\n//# sourceURL=webpack://comparador/./src/js/cargaMasivaImagen.js?");
 
 /***/ })
 
@@ -73,7 +73,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var drop
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/agregarImagen.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/cargaMasivaImagen.js");
 /******/ 	
 /******/ })()
 ;
