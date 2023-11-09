@@ -1,10 +1,10 @@
 nav(class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4")
     div(class="flex w-full flex-wrap items-center justify-between px-3")
-        button(class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden" type="button" data-te-collapse-init data-te-target="#navbarSupportedContent12" aria-controls="navbarSupportedContent12" aria-expanded="false" aria-label="Toggle navigation")
+        button(class="navegacion block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden" type="button" data-te-collapse-init data-te-target="#navbarSupportedContent12" aria-controls="navbarSupportedContent12" aria-expanded="false" aria-label="Toggle navigation")
             span(class="[&>svg]:w-7")
                 svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7")
                     path(fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd")
-        div(class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto" id="navbarSupportedContent12" data-te-collapse-item)
+        div(class="responsive !visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto" id="navbarSupportedContent12" data-te-collapse-item)
             ul(class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row" data-te-navbar-nav-ref)
                 li(class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref)
                     a(class="text-2xl font-bold text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400" href="/" data-te-nav-link-ref) Comparador
@@ -30,26 +30,3 @@ nav(class="flex-no-wrap relative flex w-full items-center justify-between bg-[#F
                 form(action="/auth/cerrar-sesion" method="POST")
                     input(type="hidden" name="_csrf" value=csrfToken) 
                     input(type="submit" class="text-sm font-bold relative flex items-center text-white lg:pr-2 cursor-pointer" value="Cerrar Sesion")         
-
-//- header.bg-gray-400.p-4
-//-     div.container.mx-auto.flex.justify-between.items-center
-//-         a(href='/')
-//-             h1.text-2xl.text-white.font-extrabold.text-center Comparador
-
-
-//-         nav(class="my-5 text-sm md:flex md:items-center md:gap-3 font-bold text-white")
-//-           a(href="/auth/registro") Crear Cuenta
-//-           a(href="/auth/login") Iniciar Sesion
-
-//- div(class="bg-indigo-700 py-5 hidden lg:block")
-//-     div(class="container mx-auto flex justify-between")
-//-         nav(class="flex gap-4 items-center")
-//-             a(href="#" class="text-sm font-bold uppercase text-white") Promociones
-//-             a(href="/laptops" class="text-sm font-bold uppercase text-white") Computadoras
-//-             a(href="/telefonos" class="text-sm font-bold uppercase text-white") Celulares
-//-             a(href="/tablets" class="text-sm font-bold uppercase text-white") Tablets
-//-         form(action="/buscador" method="POST" class="flex gap-4 items-center")
-//-             input(type="hidden" name="_csrf" value= csrfToken)
-//-             label(for="termino" class="text-sm uppercase font-bold text-white") Busqueda  
-//-             input(type="text" id="termino" name="termino" placeholder="Buscar Productos" class="p-2 rounded-lg shadow text-sm")
-//-             input(type="submit" value="Buscar" class="bg-indigo-800 rounded-lg hover:bg-indigo-400 text-white uppercase font-bold p-2 cursor-pointer text-sm")

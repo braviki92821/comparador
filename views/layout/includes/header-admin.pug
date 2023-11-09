@@ -3,9 +3,9 @@ header.bg-indigo-600.p-4
         a(href='/')
             h1.text-2xl.text-white.font-extrabold.text-center Comparador
         nav(class="my-5 text-sm md:flex md:items-center md:gap-3 font-bold text-white")
-          a(href="/admin/admimistrarLaptops") Laptops
-          a(href="/admin/admimistrarTelefonos") Telefonos
-          a(href="/admin/admimistrarTablets") Tablets
-          form(action="/auth/cerrar-sesion" method="POST")
+          a(href="/admin/admimistrarLaptops" class="sm:px-2") Laptops
+          a(href="/admin/admimistrarTelefonos" class="sm:px-2") Telefonos
+          a(href="/admin/admimistrarTablets" class="sm:px-2") Tablets
+          form(action="/auth/cerrar-sesion" method="POST" class="sm:px-2")
               input(type="hidden" name="_csrf" value=csrfToken) 
               input(type="submit" class="text-sm font-bold text-white cursor-pointer" value="Cerrar Sesion")  
