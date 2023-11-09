@@ -17,9 +17,9 @@ block contenido
                 u(class="error-detalles")    detalles
         p(class="hidden correcto bg-green-500 text-black font-bold text-center") Se cargaron los datos correctamente recargue la pagina
         p(class="hidden cargando bg-gray-500 text-black font-bold text-center") Cargando....
-        //pre= JSON.stringify(laptops, undefined, 2)
 
-        if laptops.length 
+
+        if laptops.length
 
             div(class="bg-white shadow rounded-lg")
                 ul(class="divide-y divide-gray-200")
@@ -44,19 +44,33 @@ block contenido
                     div(class="flex-1 flex justify-between sm:hidden")
                         a(href=`/admin/admimistrarLaptops?pagina=${paginaActual - 1}` class=`${paginaActual === 1 ? 'pointer-events-none ' : ''}relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50`) Anterior
                         a(href=`/admin/admimistrarLaptops?pagina=${paginaActual + 1}` class=`${paginaActual === paginas ? 'pointer-events-none ' : ''} relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50`) Siguiente
-                    div(class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between")
+                    div(class="hidden sm:flex-2 sm:flex sm:items-center sm:justify-between")
                         p(class="text-sm text-gray-700 gap-2") Mostrando 
                             span(class="font-medium") #{offset + 1} a 
                             span(class="font-medium") #{total < limite + offset ? total : limite + offset } de 
                             span(class="font-medium") #{total} resultados
-                    div(class="hidden sm:block")
-                        nav(class="relative z-0 inline-flex rounded-md shadow-md")
-                            - var n = 1
-                                while n <= paginas
-                                    a(href=`/admin/admimistrarLaptops?pagina=${n}` class=`${paginaActual == n ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{n++}
 
+                    div(class="hidden sm:block")
+                        if paginas < 15
+                            nav(class="relative z-0 inline-flex rounded-md shadow-md")
+                                - var n = 1
+                                    while n <= paginas
+                                        a(href=`/admin/admimistrarLaptops?pagina=${n}` class=`${paginaActual == n ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{n++}
+                        else
+                            nav(class="relative z-0 inline-flex rounded-md shadow-md")
+                                - var n = paginaActual < 3 ? 1 : paginaActual 
+                                    a(href=`/admin/admimistrarLaptops?pagina=${paginaActual - 1}` class=`${paginaActual === 1 ? 'pointer-events-none ' : ''}relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50`) Anterior
+                                      if paginaActual <  (paginas - 2) 
+                                            a(href=`/admin/admimistrarLaptops?pagina=${n}` class=`${paginaActual == n  ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`)= `${n++}`
+                                      if paginaActual <  (paginas - 3)  
+                                            a(href=`/admin/admimistrarLaptops?pagina=${n}` class=`${paginaActual == n  ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`)= `${n++}`
+                                            a(href=`/admin/admimistrarLaptops?pagina=${n}` class=`${paginaActual == n  ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`)= `${n++}`                                    
+                                            a(class=`bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium`) ...
+                                    a(href=`/admin/admimistrarLaptops?pagina=${paginas - 2}` class=`${paginaActual == (paginas - 2) ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{paginas - 2}
+                                    a(href=`/admin/admimistrarLaptops?pagina=${paginas - 1}` class=`${paginaActual == (paginas - 1) ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{paginas - 1}
+                                    a(href=`/admin/admimistrarLaptops?pagina=${paginas}` class=`${paginaActual == paginas ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{paginas}
         else
-           p.text-center No hay Laptops
+            p.text-center No hay Laptops
 block scripts
     script(src="/js/copiaSeguridad.js") 
     

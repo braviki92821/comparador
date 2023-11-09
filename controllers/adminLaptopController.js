@@ -40,6 +40,7 @@ const adminLaptops = async (req, res) => {
           laptops,
           csrfToken: req.csrfToken(),
           paginas: Math.ceil(total / limite),
+          //paginas: 150,
           paginaActual: Number(paginaActual),
           total,
           offset,

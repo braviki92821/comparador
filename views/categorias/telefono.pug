@@ -46,10 +46,24 @@ block contenido
                         span(class="font-medium") #{total < limite + offset ? total : limite + offset } de 
                         span(class="font-medium") #{total} resultados
                 div(class="hidden sm:block")
-                    nav(class="relative z-0 inline-flex rounded-md shadow-md")
-                        - var n = 1
-                            while n <= paginas
-                                a(href=`/telefonos?pagina=${n}` class=`${paginaActual == n ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{n++}
+                    if paginas < 15
+                        nav(class="relative z-0 inline-flex rounded-md shadow-md")
+                            - var n = 1
+                                while n <= paginas
+                                    a(href=`/telefonos?pagina=${n}` class=`${paginaActual == n ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{n++}
+                    else
+                        nav(class="relative z-0 inline-flex rounded-md shadow-md")
+                            - var n = paginaActual < 3 ? 1 : paginaActual 
+                                a(href=`/telefonos?pagina=${paginaActual - 1}` class=`${paginaActual === 1 ? 'pointer-events-none ' : ''}relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50`) Anterior
+                                  if paginaActual <  (paginas - 2) 
+                                        a(href=`/telefonos?pagina=${n}` class=`${paginaActual == n  ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`)= `${n++}`
+                                  if paginaActual <  (paginas - 3)  
+                                        a(href=`/telefonos?pagina=${n}` class=`${paginaActual == n  ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`)= `${n++}`
+                                        a(href=`/telefonos?pagina=${n}` class=`${paginaActual == n  ? 'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`)= `${n++}`                                    
+                                        a(class=`bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium`) ...
+                                a(href=`/telefonos?pagina=${paginas - 2}` class=`${paginaActual == (paginas - 2) ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{paginas - 2}
+                                a(href=`/telefonos?pagina=${paginas - 1}` class=`${paginaActual == (paginas - 1) ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{paginas - 1}
+                                a(href=`/telefonos?pagina=${paginas}` class=`${paginaActual == paginas ?  'bg-indigo-50 border-indigo-500 text-indigo-600' : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'} relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{paginas}   
         else 
             p.text-center No hay Telefonos
         a(href="/compararTelefonos" class="!fixed hidden bottom-5 right-5  rounded-full bg-red-600 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg" id="btn-back-to-top"  ) Ir a comparar
