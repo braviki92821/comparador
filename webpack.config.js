@@ -8,6 +8,7 @@ export default{
       copiaSeguridad: './src/js/copiaSeguridad.js',
       cargaMasivaImagen: './src/js/cargaMasivaImagen.js',
       navegacion: './src/js/navegacion.js',
+      activeModal: './src/js/activeModal.js',
     },
     output:{
         filename:'[name].js',

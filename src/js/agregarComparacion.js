@@ -39,13 +39,13 @@
         if(!compararLaptop.includes(laptopId)){
           
 
-        if(compararLaptop.length === 2){
-            return alert('Solo puedes agregar 2 laptops para comparar')
+        if(compararLaptop.length === 3){
+            return alert('Solo puedes agregar 3 laptops para comparar')
         }
 
         compararLaptop.push( laptopId )
 
-        if(compararLaptop.length > 1){
+        if(compararLaptop.length === 3){
             btnComparar.classList.remove('hidden')
         }else{
             btnComparar.classList.add('hidden')
@@ -65,7 +65,7 @@
             document.cookie = 'compararLaptop='+compararLaptop.toString()+';'
             localStorage.removeItem('compararLaptop')
             localStorage.setItem('compararLaptop',compararLaptop.toString())
-            if(compararLaptop.length > 1){
+            if(compararLaptop.length === 3 ){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')

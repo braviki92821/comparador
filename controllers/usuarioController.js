@@ -6,7 +6,8 @@ import bcrypt from 'bcrypt'
 const formularioLogin = (req, res) => {
     res.render("auth/login", {
         pagina: "Iniciar Sesion",
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(),
+        token: _token === undefined || _token === ''
     });
 }
 
@@ -27,7 +28,8 @@ await check("password")
     return res.render('auth/login',{
       pagina:'Iniciar Sesion',
       csrfToken: req.csrfToken(),
-      errores: resultado.array()
+      errores: resultado.array(),
+      token: _token === undefined || _token === ''
     })
   }
 

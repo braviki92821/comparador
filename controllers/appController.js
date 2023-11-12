@@ -159,10 +159,17 @@ const compararLaptops = async (req, res) => {
                 { model: MarcaL, as:'marcasLaptop' },
                 { model: Tienda, as:'tienda'}
             ]
+        }),
+        Laptop.findByPk(Number(laptopsIds[2]),{
+            include:[
+                { model: SO, as:'sistemaOperativo' },
+                { model: MarcaL, as:'marcasLaptop' },
+                { model: Tienda, as:'tienda'}
+            ]
         })
     ])
     
-    const [procesadorL1,procesadorL2] = await Promise.all([
+    const [procesadorL1, procesadorL2, procesadorL3] = await Promise.all([
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[0].procesador}
@@ -170,10 +177,14 @@ const compararLaptops = async (req, res) => {
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[1].procesador}
+        }),
+        Componente.findAll({
+            raw: true,
+            where: { nombre: laptops[2].procesador}
         })
     ])
 
-    const [graficaL1, graficaL2] = await Promise.all([
+    const [graficaL1, graficaL2, graficaL3] = await Promise.all([
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[0].grafica}
@@ -181,10 +192,14 @@ const compararLaptops = async (req, res) => {
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[1].grafica}
+        }),
+        Componente.findAll({
+            raw: true,
+            where: { nombre: laptops[2].grafica}
         })
     ])
 
-    const [memoriaRamL1, memoriaRamL2] = await Promise.all([
+    const [memoriaRamL1, memoriaRamL2, memoriaRamL3] = await Promise.all([
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[0].memoriaRam , tipo:'memoria ram'}
@@ -192,10 +207,14 @@ const compararLaptops = async (req, res) => {
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[1].memoriaRam, tipo:'memoria ram'}
+        }),
+        Componente.findAll({
+            raw: true,
+            where: { nombre: laptops[2].memoriaRam, tipo:'memoria ram'}
         })
     ])
 
-    const [almacenamientoL1, almacenamientoL2] = await Promise.all([
+    const [almacenamientoL1, almacenamientoL2, almacenamientoL3] = await Promise.all([
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[0].almacenamiento, tipo:'almacenamiento laptop'}
@@ -203,10 +222,14 @@ const compararLaptops = async (req, res) => {
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[1].almacenamiento, tipo:'almacenamiento laptop'}
+        }),
+        Componente.findAll({
+            raw: true,
+            where: { nombre: laptops[2].almacenamiento, tipo:'almacenamiento laptop'}
         })
     ])
 
-    const [bateriaL1, bateriaL2] = await Promise.all([
+    const [bateriaL1, bateriaL2, bateriaL3] = await Promise.all([
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[0].bateria.toString()}
@@ -214,10 +237,14 @@ const compararLaptops = async (req, res) => {
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[1].bateria.toString()}
+        }),
+        Componente.findAll({
+            raw: true,
+            where: { nombre: laptops[2].bateria.toString()}
         })
     ])
 
-    const [interfazL1, interfazL2] = await Promise.all([
+    const [interfazL1, interfazL2, interfazL3] = await Promise.all([
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[0].interfaz}
@@ -225,18 +252,22 @@ const compararLaptops = async (req, res) => {
         Componente.findAll({
             raw: true,
             where: { nombre: laptops[1].interfaz}
+        }),
+        Componente.findAll({
+            raw: true,
+            where: { nombre: laptops[2].interfaz}
         })
     ])
 
     res.render('comparar/compararLaptop',{
         pagina: 'Comparar Laptops',
         laptops,
-        procesadores: procesadorL1.concat(procesadorL2),
-        graficas: graficaL1.concat(graficaL2),
-        memoriasRam: memoriaRamL1.concat(memoriaRamL2),
-        almacenamiento: almacenamientoL1.concat(almacenamientoL2),
-        baterias: bateriaL1.concat(bateriaL2),
-        interfaces: interfazL1.concat(interfazL2),
+        procesadores: procesadorL1.concat(procesadorL2).concat(procesadorL3),
+        graficas: graficaL1.concat(graficaL2).concat(graficaL3),
+        memoriasRam: memoriaRamL1.concat(memoriaRamL2).concat(memoriaRamL3),
+        almacenamiento: almacenamientoL1.concat(almacenamientoL2).concat(almacenamientoL3),
+        baterias: bateriaL1.concat(bateriaL2).concat(bateriaL3),
+        interfaces: interfazL1.concat(interfazL2).concat(interfazL3),
         token: _token === undefined || _token === ''
     })
 }
