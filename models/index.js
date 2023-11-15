@@ -21,7 +21,7 @@ Tablet.belongsTo(SO, {foraingKey: 'sistemaId'})
 Tablet.belongsTo(MarcaTyT, {foraingKey: 'marcaId'})
 Tablet.belongsTo(Tienda, {foraingKey: 'tiendaId'})
 
-
+ 
 export{
    // Categoria,
     SO,

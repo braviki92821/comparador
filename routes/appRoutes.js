@@ -9,6 +9,7 @@ router.get('/',inicio)
 router.get('/promociones', promociones)
 
 router.get('/laptops', laptops)
+router.post('/laptops', laptops)
 
 router.get('/compararLaptops', protegerRuta, compararLaptops)
 

@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize'
+import { Op } from 'sequelize';
 import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda } from '../models/index.js'
 import Componente from '../models/Componente.js'
 
@@ -111,6 +112,7 @@ const laptops = async (req, res) => {
 
     const [laptops, total] = await Promise.all([
         await Laptop.findAll({
+            // where: { precio: { [Op.gte]: Number(precio) } }, 
             limit: limite,
             offset,
             include:[
@@ -131,7 +133,8 @@ const laptops = async (req, res) => {
         total,
         offset,
         limite,
-        token: _token === undefined || _token === ''
+        token: _token === undefined || _token === '',
+        precioL: true,
     })
 
   } catch (error) {
@@ -311,7 +314,8 @@ const telefonos = async (req, res) => {
         total,
         offset,
         limite,
-        token: _token === undefined || _token === ''
+        token: _token === undefined || _token === '',
+        precioT: true
     })
 
     } catch (error) {
@@ -461,7 +465,8 @@ const tablets = async (req, res) => {
             total,
             offset,
             limite,
-            token: _token === undefined || _token === ''
+            token: _token === undefined || _token === '',
+            precioT: true
         })
         
     } catch (error) {
@@ -587,7 +592,7 @@ const buscador = async (req, res) => {
     
     const { _token } = req.cookies
     
-    const {termino} = req.body
+    const { termino } = req.body
 
     if(!termino.trim()){
       return res.redirect('back')

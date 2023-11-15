@@ -1,4 +1,4 @@
-import { check, cookie, validationResult } from "express-validator";
+import { check,  validationResult } from "express-validator";
 import Usuario from "../models/Usuario.js";
 import { generarId,generarJWT } from "../helpers/tokens.js";import { emailRegistro, emailOlvidePassword } from "../helpers/emails.js";
 import bcrypt from 'bcrypt'
@@ -7,7 +7,6 @@ const formularioLogin = (req, res) => {
     res.render("auth/login", {
         pagina: "Iniciar Sesion",
         csrfToken: req.csrfToken(),
-        token: _token === undefined || _token === ''
     });
 }
 
