@@ -6,7 +6,8 @@ import Tienda from './Tienda.js'
 import MarcaL from './MarcaL.js'
 import SO from './SO.js'
 import MarcaTyT from './MarcaTyT.js'
-
+import Calificacion from './Calificacion.js'
+import Favorito from './Favorito.js'
 
 
 Laptop.belongsTo(SO, {foraingKey: 'sistemaId'})

@@ -149,21 +149,21 @@ const compararLaptops = async (req, res) => {
     const laptopsIds = req.cookies?.compararLaptop?.split(',')
 
     const [...laptops] = await Promise.all([
-        Laptop.findByPk(Number(laptopsIds[0]),{
+        Laptop.findByPk(laptopsIds[0],{
             include:[
                 { model: SO, as:'sistemaOperativo' },
                 { model: MarcaL, as:'marcasLaptop' },
                 { model: Tienda, as:'tienda'}
             ]
         }),
-        Laptop.findByPk(Number(laptopsIds[1]),{
+        Laptop.findByPk(laptopsIds[1],{
             include:[
                 { model: SO, as:'sistemaOperativo' },
                 { model: MarcaL, as:'marcasLaptop' },
                 { model: Tienda, as:'tienda'}
             ]
         }),
-        Laptop.findByPk(Number(laptopsIds[2]),{
+        Laptop.findByPk(laptopsIds[2],{
             include:[
                 { model: SO, as:'sistemaOperativo' },
                 { model: MarcaL, as:'marcasLaptop' },
@@ -331,14 +331,14 @@ const compararTelefonos = async (req, res) => {
   const TelefonosIds = req.cookies?.compararTelefono?.split(',')
   
   const [...telefonos] = await Promise.all([
-    Telefono.findByPk(Number(TelefonosIds[0]),{
+    Telefono.findByPk(TelefonosIds[0],{
         include:[
             { model: SO, as:'sistemaOperativo' },
             { model: MarcaTyT, as:'marcastyt' },
             { model: Tienda, as:'tienda'}
         ]
     }),
-    Telefono.findByPk(Number(TelefonosIds[1]),{
+    Telefono.findByPk(TelefonosIds[1],{
         include:[
             { model: SO, as:'sistemaOperativo' },
             { model: MarcaTyT, as:'marcastyt' },
@@ -482,14 +482,14 @@ const compararTablets = async (req, res) => {
     const TabletsIds = req.cookies?.compararTablet?.split(',')
   
     const [...tablets] = await Promise.all([
-      Telefono.findByPk(Number(TabletsIds[0]),{
+      Telefono.findByPk(TabletsIds[0],{
           include:[
               { model: SO, as:'sistemaOperativo' },
               { model: MarcaTyT, as:'marcastyt' },
               { model: Tienda, as:'tienda'}
           ]
       }),
-      Telefono.findByPk(Number(TabletsIds[1]),{
+      Telefono.findByPk(TabletsIds[1],{
           include:[
               { model: SO, as:'sistemaOperativo' },
               { model: MarcaTyT, as:'marcastyt' },

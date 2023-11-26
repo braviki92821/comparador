@@ -15,8 +15,6 @@ const cargaMasivaLaptops = (req, res) => {
     //console.log(body)
     
     body.forEach((element,index) => {
-        if(typeof element.id !== "number")
-            resultado.push({error: `El id del elemento: ${index} no es de tipo numerico`})
         if(typeof element.nombre !== "string")
             resultado.push({error: `El nombre del elemento: ${index} no es de tipo cadena`})  
         if(typeof element.procesador !== "string")
@@ -86,8 +84,6 @@ const cargaMasivaTelefonos = (req, res) => {
     //console.log(body)
     
     body.forEach((element,index) => {
-        if(typeof element.id !== "number")
-            resultado.push({error: `El id del elemento: ${index} no es de tipo numerico`})
         if(typeof element.nombre !== "string")
             resultado.push({error: `El nombre del elemento: ${index} no es de tipo cadena`})  
         if(typeof element.procesador !== "string")
@@ -145,8 +141,6 @@ const cargaMasivaTablets = (req, res) => {
     //console.log(body)
     
     body.forEach((element,index) => {
-        if(typeof element.id !== "number")
-            resultado.push({error: `El id del elemento: ${index} no es de tipo numerico`})
         if(typeof element.nombre !== "string")
             resultado.push({error: `El nombre del elemento: ${index} no es de tipo cadena`})  
         if(typeof element.procesador !== "string")
