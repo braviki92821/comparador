@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 import { Op } from 'sequelize';
-import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda } from '../models/index.js'
+import { Laptop, Tablet, Telefono, SO, MarcaL, MarcaTyT, Tienda, Favorito } from '../models/index.js'
 import Componente from '../models/Componente.js'
 
 const inicio = async (req, res) => {
@@ -147,7 +147,7 @@ const compararLaptops = async (req, res) => {
     const { _token } = req.cookies
 
     const laptopsIds = req.cookies?.compararLaptop?.split(',')
-
+ 
     const [...laptops] = await Promise.all([
         Laptop.findByPk(laptopsIds[0],{
             include:[
@@ -264,6 +264,7 @@ const compararLaptops = async (req, res) => {
 
     res.render('comparar/compararLaptop',{
         pagina: 'Comparar Laptops',
+        csrfToken: req.csrfToken(),
         laptops,
         procesadores: procesadorL1.concat(procesadorL2).concat(procesadorL3),
         graficas: graficaL1.concat(graficaL2).concat(graficaL3),
@@ -415,6 +416,7 @@ const compararTelefonos = async (req, res) => {
 
 res.render('comparar/compararTelefono',{
     pagina: 'Comparar Telefonos',
+    csrfToken: req.csrfToken(),
     telefonos,
     procesadores: procesadorT1.concat(procesadorT2),
     memoriasRam: memoriaRamT1.concat(memoriaRamT2),
@@ -566,6 +568,7 @@ const compararTablets = async (req, res) => {
   
     res.render('comparar/compararTablet',{
       pagina: 'Comparar Tablets',
+      csrfToken: req.csrfToken(),
       tablets,
       procesadores: procesadorT1.concat(procesadorT2),
       memoriasRam: memoriaRamT1.concat(memoriaRamT2),
@@ -639,6 +642,94 @@ const buscador = async (req, res) => {
     })
 }
 
+const mostrarfavoritos = async (req, res) => {
+    const { id } = req.usuario
+
+    // const { pagina: paginaActual } = req.query;
+
+    // const exp = /^[0-9]+$/;
+
+    // if (!exp.test(paginaActual)) {
+    //   return res.redirect("/favoritos?pagina=1");
+    // }
+
+    const favoritos = await Favorito.findAll({
+        where: { usuarioId: id }
+    })
+
+    let resultados = []
+
+    for(let i = 0; i< favoritos.length; i++){
+        // resultados = laptops.filter((x)=> x.id === favoritos[i].idProducto)
+        resultados.push(await Laptop.findByPk(favoritos[i].idProducto,{ include: [{ model: Tienda, as:'tienda'}] }))
+        resultados.push(await Telefono.findByPk(favoritos[i].idProducto,{ include: [{ model: Tienda, as:'tienda'}] }))
+        resultados.push(await Tablet.findByPk(favoritos[i].idProducto,{ include: [{ model: Tienda, as:'tienda'}] }))
+    }
+
+    resultados = resultados.filter((x)=> x !== null)
+    // const total = resultados.length
+    // const limite = 6
+    // const offset = paginaActual * limite - limite
+
+    res.render('favoritos', {
+        pagina: 'Tus Productos favoritos',
+        csrfToken: req.csrfToken(),
+        resultados,
+        // paginas: Math.ceil(total / limite),        
+        // paginaActual: Number(paginaActual),
+        // total,
+        // offset,
+        // limite,
+    })
+}
+
+const favoritos = async (req, res) => {
+    const { id } = req.usuario
+
+    const favoritos = await Favorito.findAll({
+        where: { usuarioId: id }
+    })
+
+    res.json( favoritos )
+
+}
+
+const agregarFavorito = async(req, res) => {
+    const { productoId } = req.body
+    const { id } = req.usuario
+
+    const esfavorito = await Favorito.findAll({
+        where: {
+            [Op.and]: [
+              { idProducto: productoId },
+              { usuarioId: id }
+            ]
+          }
+    })
+    
+    console.log(esfavorito)
+
+    if(esfavorito.length !== 0) {
+        await Favorito.destroy({
+            where: {
+                [Op.and]: [
+                  { idProducto: productoId },
+                  { usuarioId: id }
+                ]
+              }
+        });
+        return res.json({ result : 'ok', operacion: 'eliminar'} )
+    }
+    
+    const nuevofavorito = await Favorito.create({
+        idProducto: productoId,
+        usuarioId: id
+    })
+
+
+    res.json({ result : 'ok', operacion: 'añadir'} )
+}
+
 export {
     inicio,
     laptops,
@@ -649,5 +740,8 @@ export {
     tablets,
     compararTablets,
     noEncontrado,
-    buscador
+    buscador,
+    agregarFavorito,
+    favoritos,
+    mostrarfavoritos
 }

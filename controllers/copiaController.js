@@ -7,12 +7,11 @@ const respaldoLaptops = async (req, res) => {
     res.json( { laptops } )
 }
 
-const cargaMasivaLaptops = (req, res) => {
+const cargaMasivaLaptops = async (req, res) => {
     
     const { body } = req
 
     let resultado = []
-    //console.log(body)
     
     body.forEach((element,index) => {
         if(typeof element.nombre !== "string")
@@ -50,10 +49,12 @@ const cargaMasivaLaptops = (req, res) => {
         return res.json( { result : 'error' , errores: resultado} )
     }
 
-    Laptop.bulkCreate(body)
+    //Laptop.bulkCreate(body)
+    body.forEach(element => {
+        Laptop.create(element)
+    })
   
     res.json( { result : 'ok'} )
-
 
 }
  
@@ -81,7 +82,6 @@ const cargaMasivaTelefonos = (req, res) => {
     const { body } = req
 
     let resultado = []
-    //console.log(body)
     
     body.forEach((element,index) => {
         if(typeof element.nombre !== "string")
@@ -119,10 +119,11 @@ const cargaMasivaTelefonos = (req, res) => {
         return res.json( { result : 'error' , errores: resultado} )
     }
 
-    Telefono.bulkCreate(body)
+    body.forEach(element => {
+        Telefono.create(element)
+    })
   
     res.json( { result : 'ok'} )
-
 
 }
 
@@ -176,7 +177,10 @@ const cargaMasivaTablets = (req, res) => {
         return res.json( { result : 'error' , errores: resultado} )
     }
 
-    Tablet.bulkCreate(body)
+    //Tablet.bulkCreate(body)
+    body.forEach(element => {
+        Tablet.create(element)
+    })
   
     res.json( { result : 'ok'} )
 

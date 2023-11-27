@@ -60,7 +60,7 @@ const crearLaptop = async (req, res) => {
     }
 
     const [ sistemas, marcas, tiendas] = await Promise.all([
-        SO.findAll(),
+        SO.findAll({ where: {tipo: 'computadora'} }),
         MarcaL.findAll(),
         Tienda.findAll()
     ])
@@ -100,7 +100,7 @@ const guardarlaptop = async (req, res) => {
 
     if (!resultado.isEmpty()) {
         const [ sistemas, marcas, tiendas] = await Promise.all([
-            SO.findAll(), //select * from sistemas where campo=s
+            SO.findAll({ where: {tipo: 'computadora'} }), //select * from sistemas where campo=s
             MarcaL.findAll(),
             Tienda.findAll()
         ])
@@ -156,6 +156,7 @@ const guardarlaptop = async (req, res) => {
     
         const { id } = laptopGuardada
         
+        console.log(laptopGuardada)
         res.redirect(`/admin/agregar-imagen-laptop/${id}`);
 
     } catch (error) {
@@ -206,7 +207,7 @@ const almacenarImagenLaptop = async (req, res) => {
 
       await laptop.save()
 
-      res.redirect('/admin/admimistrarLaptops')
+      res.redirect('/admin/admimistrarLaptops?pagina=1')
 
     }catch(error){
         console.log(error)

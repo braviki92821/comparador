@@ -19,7 +19,8 @@ block contenido
                                 else
                                     span(class="text-gray-800 font-bold")= `$${producto.precio}`
                                 p(class="text-sm text-gray-600") Tienda: 
-                                    span(class="text-gray-800 font-bold")= producto.tienda.nombre  
+                                    span(class="text-gray-800 font-bold")= producto.tienda.nombre
+                            button(type="button" data-producto-id=`${producto.id}` class="favorito bg-yellow-600 w-full text-center block text-white p-2 uppercase rounded" name="favorito") Añadir a favoritos
         h2.text-center.text-2xl.font-extrabold.mt-5 Resultados            
         div(class="border border-t-slate-950 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8")
                 div(class="bg-white border border-x-gray-950 mt-5")
@@ -80,3 +81,5 @@ block contenido
                                 p(class="text-black font-bold") Ganador
                             else
                                 p(class="text-black font-bold") Perdedor
+block scripts
+    script(src="/js/añadirfavorito.js")

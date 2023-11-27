@@ -59,7 +59,7 @@ const crearTablet = async (req, res) => {
     }
 
     const [ sistemas, marcas, tiendas] = await Promise.all([
-        SO.findAll(),
+        SO.findAll({ where: {tipo: 'telefono'} }),
         MarcaTyT.findAll(),
         Tienda.findAll()
     ])
@@ -100,7 +100,7 @@ const guardarTablet = async (req, res) => {
 
     if (!resultado.isEmpty()) {
         const [ sistemas, marcas, tiendas] = await Promise.all([
-            SO.findAll(),
+            SO.findAll({ where: {tipo: 'telefono'} }),
             MarcaTyT.findAll(),
             Tienda.findAll()
         ])

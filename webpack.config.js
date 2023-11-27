@@ -9,6 +9,7 @@ export default{
       cargaMasivaImagen: './src/js/cargaMasivaImagen.js',
       navegacion: './src/js/navegacion.js',
       activeModal: './src/js/activeModal.js',
+      añadirFavorito: './src/js/añadirFavorito.js'
     },
     output:{
         filename:'[name].js',

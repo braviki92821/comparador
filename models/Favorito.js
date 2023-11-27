@@ -7,6 +7,9 @@ const Favorito = db.define('favoritos', {
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true
+    },
+    idProducto: {
+        type: DataTypes.STRING
     }
 })
 

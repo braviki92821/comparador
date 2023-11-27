@@ -30,6 +30,6 @@ const marcaLaptops = [
         nombre:'Huawei'
     },
     
-    ]
+]
     
 export default marcaLaptops;

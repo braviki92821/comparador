@@ -5,6 +5,7 @@ import Telefono from './Telefono.js'
 import Tienda from './Tienda.js'
 import MarcaL from './MarcaL.js'
 import SO from './SO.js'
+import Usuario from './Usuario.js'
 import MarcaTyT from './MarcaTyT.js'
 import Calificacion from './Calificacion.js'
 import Favorito from './Favorito.js'
@@ -22,9 +23,10 @@ Tablet.belongsTo(SO, {foraingKey: 'sistemaId'})
 Tablet.belongsTo(MarcaTyT, {foraingKey: 'marcaId'})
 Tablet.belongsTo(Tienda, {foraingKey: 'tiendaId'})
 
+Favorito.belongsTo(Usuario, {foraingKey: 'usuarioId'})
+
  
 export{
-   // Categoria,
     SO,
     Laptop,
     Telefono,
@@ -32,4 +34,5 @@ export{
     MarcaL,
     MarcaTyT,
     Tienda,
+    Favorito
 }
