@@ -76,15 +76,17 @@ aside(class="fixed top-auto z-[1035] left-0 bg-neutral-300 w-60 min-h-screen p-4
                                span Precio
                         div(class="flex items-center justify-between p-2")
                             if precioL
-                                form(action="/laptops" method="POST" class="form-laptop")
-                                    input(type="hidden" name="_csrf" value= csrfToken) 
-                                    input(type="range" class="rango-laptop" name="valor" value="5" min="0" max="5" step="1" class="transparent h-[4px] w-full cursor-pointer appearance-none border-transpar bg-neutral-600" )
+                                p(class="text-xs") $2000
+                                input(type="range" class="rango-laptop" name="valor" value=precio min="2000" max="75000" step="1000" class="transparent h-[4px] w-full cursor-pointer appearance-none border-transpar bg-neutral-600" )
+                                p(class="text-xs") $75000
                             if precioT
-                                form(action="/telefonos" method="POST" class="form-telefono") 
-                                    input(type="range" class="rango-telefono" name="precio" value="5" min="0" max="5" step="1" class="transparent h-[4px] w-full cursor-pointer appearance-none border-transpar bg-neutral-600" )
+                                p(class="text-xs") $2000
+                                input(type="range" class="rango-telefono" name="precio" value=precio min="2000" max="65000" step="1000" class="transparent h-[4px] w-full cursor-pointer appearance-none border-transpar bg-neutral-600" )
+                                p(class="text-xs") $65000
                             if precioTb
-                                form(action="/tablets" method="POST" class="form-tablet") 
-                                    input(type="range" class="rango-tablet" name="precio" value="5" min="0" max="5" step="1" class="transparent h-[4px] w-full cursor-pointer appearance-none border-transpar bg-neutral-600" )
+                                p(class="text-xs") $2000
+                                input(type="range" class="rango-tablet" name="precio" value=precio min="2000" max="65000" step="1000" class="transparent h-[4px] w-full cursor-pointer appearance-none border-transpar bg-neutral-600" )
+                                p(class="text-xs") $65000
             li
                 div(class="flex items-center justify-center p-2 bg-yellow-600")
                     div(class="flex items-center")

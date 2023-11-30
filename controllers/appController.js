@@ -96,12 +96,12 @@ const laptops = async (req, res) => {
 
   const { _token } = req.cookies
 
-  const { pagina: paginaActual } = req.query;
+  const { pagina: paginaActual, precio:preciop  } = req.query;
 
   const exp = /^[0-9]+$/;
 
-  if (!exp.test(paginaActual)) {
-    return res.redirect("/laptops?pagina=1");
+  if (!exp.test(paginaActual) || !exp.test(preciop)) {
+        return res.redirect("/laptops?pagina=1&precio=75000");
   }
 
   try {
@@ -112,7 +112,7 @@ const laptops = async (req, res) => {
 
     const [laptops, total] = await Promise.all([
         await Laptop.findAll({
-            // where: { precio: { [Op.gte]: Number(precio) } }, 
+            where: { precio: { [Op.lte]: preciop } }, 
             limit: limite,
             offset,
             include:[
@@ -121,7 +121,7 @@ const laptops = async (req, res) => {
                 { model: Tienda, as:'tienda'}
             ]
         }),
-        Laptop.count()
+        Laptop.count({ where: { precio: { [Op.lte]: Number(preciop) } } })
     ])
 
     res.render('categorias/laptop',{
@@ -130,6 +130,7 @@ const laptops = async (req, res) => {
         csrfToken: req.csrfToken(),
         paginas: Math.ceil(total / limite),
         paginaActual: Number(paginaActual),
+        precio: Number(preciop),
         total,
         offset,
         limite,
@@ -280,12 +281,12 @@ const telefonos = async (req, res) => {
     
     const { _token } = req.cookies
     
-    const { pagina: paginaActual } = req.query;
+    const { pagina: paginaActual, precio:preciop  } = req.query;
   
     const exp = /^[0-9]+$/;
   
-    if (!exp.test(paginaActual)) {
-      return res.redirect("/telefonos?pagina=1");
+    if (!exp.test(paginaActual) || !exp.test(preciop)) {
+      return res.redirect("/telefonos?pagina=1&precio=65000");
     }
 
     try {
@@ -295,6 +296,7 @@ const telefonos = async (req, res) => {
 
       const [telefonos, total] = await Promise.all([
           await Telefono.findAll({
+            where: { precio: { [Op.lte]: preciop } },
             limit: limite,
             offset,
             include: [
@@ -303,7 +305,7 @@ const telefonos = async (req, res) => {
                 { model: Tienda, as:'tienda'}
             ],                        
           }),
-          Telefono.count()
+          Telefono.count({ where: { precio: { [Op.lte]: preciop } } })
       ])
 
       res.render('categorias/telefono',{
@@ -312,6 +314,7 @@ const telefonos = async (req, res) => {
         csrfToken: req.csrfToken(),
         paginas: Math.ceil(total / limite),
         paginaActual: Number(paginaActual),
+        precio: Number(preciop),
         total,
         offset,
         limite,
@@ -432,12 +435,12 @@ const tablets = async (req, res) => {
     
     const { _token } = req.cookies
     
-    const { pagina: paginaActual } = req.query;
+    const { pagina: paginaActual, precio:preciop  } = req.query;
   
     const exp = /^[0-9]+$/;
   
-    if (!exp.test(paginaActual)) {
-      return res.redirect("/tablets?pagina=1");
+    if (!exp.test(paginaActual) || !exp.test(preciop)) {
+      return res.redirect("/tablets?pagina=1&precio=65000");
     }
 
     try {
@@ -464,11 +467,12 @@ const tablets = async (req, res) => {
             csrfToken: req.csrfToken(),
             paginas: Math.ceil(total / limite),
             paginaActual: Number(paginaActual),
+            precio: Number(preciop),
             total,
             offset,
             limite,
             token: _token === undefined || _token === '',
-            precioT: true
+            precioTb: true
         })
         
     } catch (error) {
