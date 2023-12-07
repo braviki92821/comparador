@@ -4,12 +4,15 @@ div(class="bg-white border border-x-gray-950 mt-5")
         p(class="text-sm text-gray-600") Procesador:     
             span(class="text-black font-bold")= tablets[n].procesador
             span(class="text-black font-bold")=` / Puntos: ${procesadores[n].valor}`
+            button(type="button" data-puntos-procesador=`${procesadores[n].valor}` class="cursor-pointer modal-procesadormovil text-black") ver Detalles de componente
         p(class="text-sm text-gray-600") Memoria Ram: 
             span(class="text-black font-bold")= tablets[n].memoriaRam
             span(class="text-black font-bold")=` / Puntos: ${memoriasRam[n].valor}`
+            button(type="button" data-puntos-memoria=`${memoriasRam[n].valor}` class="cursor-pointer modal-memoriaRamMovil text-black") ver Detalles de componente
         p(class="text-sm text-gray-600") Almacenamiento: 
             span(class="text-black font-bold")= tablets[n].almacenamiento
             span(class="text-black font-bold")=` / Puntos: ${almacenamiento[n].valor}`
+            button(type="button" data-puntos-almacenamiento=`${almacenamiento[n].valor}` class="cursor-pointer modal-almacenamientoMovil text-black") ver Detalles de componente
         p(class="text-sm text-gray-600") Bateria: 
             span(class="text-black font-bold")= tablets[n].bateria
             span(class="text-black font-bold")=` / Puntos: ${baterias[n].valor}`
@@ -21,3 +24,15 @@ div(class="bg-white border border-x-gray-950 mt-5")
             span(class="text-black font-bold")=` / Puntos: ${camarasT[n].valor}`
         p(class="text-sm text-gray-600") Sistema Operativo: 
             span(class="text-black font-bold")= tablets[n].sistemaOperativo.nombre
+        p(class="text-sm text-gray-800") Puntos Totales: 
+            span(class="text-black font-bold")=` ${(procesadores[n].valor + memoriasRam[n].valor + almacenamiento[n].valor + baterias[n].valor + camarasF[n].valor + camarasT[n].valor)}`
+        - var puntos = procesadores[n].valor + memoriasRam[n].valor + almacenamiento[n].valor + baterias[n].valor + camarasF[n].valor + camarasT[n].valor
+            if puntos < 25
+                p(class="text-sm text-gray-800") Puede ser adecuado para:
+                    span(class="text-black font-bold") Docentes, juegos de graficos bajos
+            else if puntos < 40
+                p(class="text-sm text-gray-800") Puede ser adecuado para:
+                    span(class="text-black font-bold") Diseño, Docentes, juegos de graficos altos, Tomar fotos en resulcion alta(Puede incluir asistencia con IA dependediendo de la marca)
+            else if puntos < 60
+                p(class="text-sm text-gray-800") Puede ser adecuado para: 
+                    span(class="text-black font-bold") Diseño de alto nivel, Docentes, juegos de graficos altos, Tomar Excelentes fotos de alta resolucion o en 4k(Puede incluir asistencia con IA dependediendo de la marca)
