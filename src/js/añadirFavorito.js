@@ -2,6 +2,9 @@
 
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     const favorito = document.querySelectorAll('.favorito')
+    const nuevaComparacionLaptop = document.querySelector('.otra-comparacion-laptop')
+    const nuevaComparacionTelefono = document.querySelector('.otra-comparacion-telefono')
+    const nuevaComparacionTablet = document.querySelector('.otra-comparacion-tablet')
 
     favorito.forEach(boton => {
         boton.addEventListener('click', agregarFavoritoComparacion)
@@ -68,5 +71,26 @@
             console.log(error)
         }
     }
+
+    nuevaComparacionLaptop?.addEventListener('click', e => {
+        localStorage.getItem('compararLaptop')
+        localStorage.setItem('compararLaptop','')
+        document.cookie = 'compararLaptop=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+        window.location.href = '/laptops?pagina=1&precio=75000'
+    })
+
+    nuevaComparacionTelefono?.addEventListener('click', e => {
+        localStorage.getItem('compararTelefono')
+        localStorage.setItem('compararTelefono','')
+        document.cookie = 'compararTelefono=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+        window.location.href = '/telefonos?pagina=1&precio=65000'
+    })
+
+    nuevaComparacionTablet?.addEventListener('click', e => {
+        localStorage.getItem('compararTablet')
+        localStorage.setItem('compararTablet','')
+        document.cookie = 'compararTablet=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+        window.location.href = '/tablets?pagina=1&precio=65000'
+    })
 
 })()

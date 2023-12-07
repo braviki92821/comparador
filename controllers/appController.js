@@ -172,6 +172,10 @@ const compararLaptops = async (req, res) => {
             ]
         })
     ])
+
+    if(laptops[0] === null|| laptops[1] === null || laptops[2] === null){
+       return res.redirect('/laptops?pagina=1&precio=75000')
+     }
     
     const [procesadorL1, procesadorL2, procesadorL3] = await Promise.all([
         Componente.findAll({
@@ -358,6 +362,10 @@ const compararTelefonos = async (req, res) => {
     })
   ])
 
+  if(telefonos[0] === null|| telefonos[1] === null || telefonos[2] === null){
+    return res.redirect('/telefonos?pagina=1&precio=65000')
+  }
+
   const [procesadorT1, procesadorT2, procesadorT3] = await Promise.all([
     Componente.findAll({
         raw: true,
@@ -541,6 +549,10 @@ const compararTablets = async (req, res) => {
           ]
       })
     ])
+
+    if(tablets[0] === null|| tablets[1] === null || tablets[2] === null){
+        return res.redirect('/tablets?pagina=1&precio=65000')
+      }
   
     const [procesadorT1, procesadorT2, procesadorT3] = await Promise.all([
       Componente.findAll({

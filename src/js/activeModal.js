@@ -149,6 +149,7 @@
         procesador.classList.add('hidden');
         tarjetaGrafica.classList.add('hidden');
         memoriaRam.classList.add('hidden')
+        almacenamiento.classList.add('hidden')
         if(procesador.contains(h3) && procesador.contains(p)){
             procesador.removeChild(h3)
             procesador.removeChild(p)
