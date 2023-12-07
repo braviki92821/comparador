@@ -356,8 +356,8 @@ const eliminarLaptop = async (req, res) => {
     if(!laptop){
        return res.redirect('/admin/admimistrarLaptops')
     }
-
-    await unlink(`public/uploads/${laptop.imagen}`);
+    
+    //await unlink(`public/uploads/${laptop.imagen}`);
 
     console.log(`se elimino: ${laptop.imagen}`);
     await laptop.destroy();

@@ -6,7 +6,7 @@ block styles
 block contenido
     div.py-10
         h2.text-center.text-2xl.font-extrabold= pagina
-        div(class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8")
+        div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-8")
              each producto in telefonos
                     div(class="bg-white shadow rounded-lg border border-black")
                         img(class=" h-72 w-full" src=`/uploads/${producto.imagen}` alt=`${producto.imagen}`)
@@ -22,64 +22,17 @@ block contenido
                                     span(class="text-gray-800 font-bold")= producto.tienda.nombre
                             button(type="button" data-producto-id=`${producto.id}` class="favorito bg-yellow-600 w-full text-center block text-white p-2 uppercase rounded" name="favorito") Añadir a favoritos
         h2.text-center.text-2xl.font-extrabold.mt-5 Resultados            
-        div(class="border border-t-slate-950 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8")
-                div(class="bg-white border border-x-gray-950 mt-5")
-                    div(class="p-5 space-y-3")
-                        h3(class="text-2xl font-bold") Caracteristicas
-                        p(class="text-sm text-gray-600") Procesador:     
-                            span(class="text-black font-bold")= telefonos[0].procesador
-                            span(class="text-black font-bold")=` / Puntos: ${procesadores[0].valor}`
-                        p(class="text-sm text-gray-600") Memoria Ram: 
-                            span(class="text-black font-bold")= telefonos[0].memoriaRam
-                            span(class="text-black font-bold")=` / Puntos: ${memoriasRam[0].valor}`
-                        p(class="text-sm text-gray-600") Almacenamiento: 
-                            span(class="text-black font-bold")= telefonos[0].almacenamiento
-                            span(class="text-black font-bold")=` / Puntos: ${almacenamiento[0].valor}`
-                        p(class="text-sm text-gray-600") Bateria: 
-                            span(class="text-black font-bold")= telefonos[0].bateria
-                            span(class="text-black font-bold")=` / Puntos: ${baterias[0].valor}`
-                        p(class="text-sm text-gray-600") Camara Frontal: 
-                            span(class="text-black font-bold")= telefonos[0].camaraF
-                            span(class="text-black font-bold")=` / Puntos: ${camarasF[0].valor}`
-                        p(class="text-sm text-gray-600") Camara Trasera: 
-                            span(class="text-black font-bold")= telefonos[0].camaraT
-                            span(class="text-black font-bold")=` / Puntos: ${camarasT[0].valor}`
-                        p(class="text-sm text-gray-600") Sistema Operativo: 
-                            span(class="text-black font-bold")= telefonos[0].sistemaOperativo.nombre
-                        p(class="text-sm text-gray-600") Puntos Totales: 
-                            span(class="text-black font-bold")=` ${(procesadores[0].valor + memoriasRam[0].valor + almacenamiento[0].valor + baterias[0].valor + camarasF[0].valor + camarasT[0].valor)}` 
-                            if (procesadores[0].valor + memoriasRam[0].valor + almacenamiento[0].valor + baterias[0].valor + camarasF[0].valor + camarasT[0].valor) > (procesadores[1].valor + memoriasRam[1].valor + almacenamiento[1].valor + baterias[1].valor + camarasF[1].valor + camarasT[1].valor)
-                                p(class="text-black font-bold") Ganador
-                            else
-                                p(class="text-black font-bold") Perdedor
-                div(class="bg-white border border-x-gray-950 mt-5")
-                    div(class="p-5 space-y-3")
-                        h3(class="text-2xl font-bold") Caracteristicas
-                        p(class="text-sm text-gray-600") Procesador:     
-                            span(class="text-black font-bold")= telefonos[1].procesador
-                            span(class="text-black font-bold")=` / Puntos: ${procesadores[1].valor}`
-                        p(class="text-sm text-gray-600") Memoria Ram: 
-                            span(class="text-black font-bold")= telefonos[1].memoriaRam
-                            span(class="text-black font-bold")=` / Puntos: ${memoriasRam[1].valor}`
-                        p(class="text-sm text-gray-600") Almacenamiento: 
-                            span(class="text-black font-bold")= telefonos[1].almacenamiento
-                            span(class="text-black font-bold")=` / Puntos: ${almacenamiento[1].valor}`
-                        p(class="text-sm text-gray-600") Bateria: 
-                            span(class="text-black font-bold")= telefonos[1].bateria
-                            span(class="text-black font-bold")=` / Puntos: ${baterias[1].valor}`
-                        p(class="text-sm text-gray-600") Camara Frontal: 
-                            span(class="text-black font-bold")= telefonos[1].camaraF
-                            span(class="text-black font-bold")=` / Puntos: ${camarasF[1].valor}`
-                        p(class="text-sm text-gray-600") Camara Trasera: 
-                            span(class="text-black font-bold")= telefonos[1].camaraT
-                            span(class="text-black font-bold")=` / Puntos: ${camarasT[1].valor}`
-                        p(class="text-sm text-gray-600") Sistema Operativo: 
-                            span(class="text-black font-bold")= telefonos[1].sistemaOperativo.nombre
-                        p(class="text-sm text-gray-600") Puntos Totales: 
-                            span(class="text-black font-bold")=` ${(procesadores[1].valor + memoriasRam[1].valor + almacenamiento[1].valor + baterias[1].valor + camarasF[1].valor + camarasT[1].valor)}` 
-                            if (procesadores[1].valor + memoriasRam[1].valor + almacenamiento[1].valor + baterias[1].valor + camarasF[1].valor + camarasT[1].valor) > (procesadores[0].valor + memoriasRam[0].valor + almacenamiento[0].valor + baterias[0].valor + camarasF[0].valor + camarasT[0].valor)
-                                p(class="text-black font-bold") Ganador
-                            else
-                                p(class="text-black font-bold") Perdedor
+        div(class="border border-t-slate-950 grid grid-cols-1 lg:grid-cols-3 gap-5 mt-8")
+            - var n = 0
+                include ../templates/resultadoTelefono
+            - var n = 1
+                include ../templates/resultadoTelefono
+            - var n = 2
+                include ../templates/resultadoTelefono
+        include ../templates/modal
+
 block scripts
+    script(src="/js/alpinejs.js")
+    script(src="/js/navegacion.js") 
+    script(src="/js/activeModal.js")
     script(src="/js/añadirfavorito.js")

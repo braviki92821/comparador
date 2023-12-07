@@ -348,10 +348,17 @@ const compararTelefonos = async (req, res) => {
             { model: MarcaTyT, as:'marcastyt' },
             { model: Tienda, as:'tienda'}
         ]
+    }),
+    Telefono.findByPk(TelefonosIds[2],{
+        include:[
+            { model: SO, as:'sistemaOperativo' },
+            { model: MarcaTyT, as:'marcastyt' },
+            { model: Tienda, as:'tienda'}
+        ]
     })
   ])
 
-  const [procesadorT1,procesadorT2] = await Promise.all([
+  const [procesadorT1, procesadorT2, procesadorT3] = await Promise.all([
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[0].procesador}
@@ -359,10 +366,14 @@ const compararTelefonos = async (req, res) => {
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[1].procesador}
+    }),
+    Componente.findAll({
+        raw: true,
+        where: { nombre: telefonos[2].procesador}
     })
   ])
 
-  const [memoriaRamT1, memoriaRamT2] = await Promise.all([
+  const [memoriaRamT1, memoriaRamT2, memoriaRamT3] = await Promise.all([
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[0].memoriaRam, tipo:'memoria ram'}
@@ -370,10 +381,14 @@ const compararTelefonos = async (req, res) => {
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[1].memoriaRam, tipo:'memoria ram'}
+    }),
+    Componente.findAll({
+        raw: true,
+        where: { nombre: telefonos[2].memoriaRam, tipo:'memoria ram'}
     })
   ]) 
 
-  const [almacenamientoT1, almacenamientoT2] = await Promise.all([
+  const [almacenamientoT1, almacenamientoT2, almacenamientoT3] = await Promise.all([
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[0].almacenamiento, tipo:'almacenamiento telefono'}
@@ -381,10 +396,14 @@ const compararTelefonos = async (req, res) => {
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[1].almacenamiento, tipo:'almacenamiento telefono'}
+    }),
+    Componente.findAll({
+        raw: true,
+        where: { nombre: telefonos[2].almacenamiento, tipo:'almacenamiento telefono'}
     })
   ])
 
-  const [bateriaT1, bateriaT2] = await Promise.all([
+  const [bateriaT1, bateriaT2, bateriaT3] = await Promise.all([
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[0].bateria.toString()}
@@ -392,10 +411,14 @@ const compararTelefonos = async (req, res) => {
     Componente.findAll({
         raw: true,
         where: { nombre: telefonos[1].bateria.toString()}
+    }),
+    Componente.findAll({
+        raw: true,
+        where: { nombre: telefonos[2].bateria.toString()}
     })
   ])
 
-  const [camaraFT1, camaraFT2] = await Promise.all([
+  const [camaraFT1, camaraFT2, camaraFT3] = await Promise.all([
     Componente.findAll({
         raw: true,
         where : { nombre: telefonos[0].camaraF, tipo: 'camara frontal'}
@@ -403,10 +426,14 @@ const compararTelefonos = async (req, res) => {
     Componente.findAll({
         raw: true,
         where : { nombre: telefonos[1].camaraF, tipo: 'camara frontal'}
-    })    
+    }),
+    Componente.findAll({
+        raw: true,
+        where : { nombre: telefonos[2].camaraF, tipo: 'camara frontal'}
+    })        
   ])
 
-  const [camaraTT1, camaraTT2] = await Promise.all([
+  const [camaraTT1, camaraTT2, camaraTT3] = await Promise.all([
     Componente.findAll({
         raw: true,
         where : { nombre: telefonos[0].camaraT, tipo: 'camara trasera'}
@@ -414,19 +441,23 @@ const compararTelefonos = async (req, res) => {
     Componente.findAll({
         raw: true,
         where : { nombre: telefonos[1].camaraT, tipo: 'camara trasera'}
-    })    
+    }),
+    Componente.findAll({
+        raw: true,
+        where : { nombre: telefonos[1].camaraT, tipo: 'camara trasera'}
+    })       
   ])
 
 res.render('comparar/compararTelefono',{
     pagina: 'Comparar Telefonos',
     csrfToken: req.csrfToken(),
     telefonos,
-    procesadores: procesadorT1.concat(procesadorT2),
-    memoriasRam: memoriaRamT1.concat(memoriaRamT2),
-    almacenamiento: almacenamientoT1.concat(almacenamientoT2),
-    baterias: bateriaT1.concat(bateriaT2),
-    camarasF: camaraFT1.concat(camaraFT2),
-    camarasT: camaraTT1.concat(camaraTT2),
+    procesadores: procesadorT1.concat(procesadorT2).concat(procesadorT3),
+    memoriasRam: memoriaRamT1.concat(memoriaRamT2).concat(memoriaRamT3),
+    almacenamiento: almacenamientoT1.concat(almacenamientoT2).concat(almacenamientoT3),
+    baterias: bateriaT1.concat(bateriaT2).concat(bateriaT3),
+    camarasF: camaraFT1.concat(camaraFT2).concat(camaraFT3),
+    camarasT: camaraTT1.concat(camaraTT2).concat(camaraTT3),
     token: _token === undefined || _token === ''
 })
 }
@@ -488,14 +519,21 @@ const compararTablets = async (req, res) => {
     const TabletsIds = req.cookies?.compararTablet?.split(',')
   
     const [...tablets] = await Promise.all([
-      Telefono.findByPk(TabletsIds[0],{
+      Tablet.findByPk(TabletsIds[0],{
           include:[
               { model: SO, as:'sistemaOperativo' },
               { model: MarcaTyT, as:'marcastyt' },
               { model: Tienda, as:'tienda'}
           ]
       }),
-      Telefono.findByPk(TabletsIds[1],{
+      Tablet.findByPk(TabletsIds[1],{
+          include:[
+              { model: SO, as:'sistemaOperativo' },
+              { model: MarcaTyT, as:'marcastyt' },
+              { model: Tienda, as:'tienda'}
+          ]
+      }),
+      Tablet.findByPk(TabletsIds[2],{
           include:[
               { model: SO, as:'sistemaOperativo' },
               { model: MarcaTyT, as:'marcastyt' },
@@ -504,7 +542,7 @@ const compararTablets = async (req, res) => {
       })
     ])
   
-    const [procesadorT1,procesadorT2] = await Promise.all([
+    const [procesadorT1, procesadorT2, procesadorT3] = await Promise.all([
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[0].procesador}
@@ -512,10 +550,14 @@ const compararTablets = async (req, res) => {
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[1].procesador}
+      }),
+      Componente.findAll({
+          raw: true,
+          where: { nombre: tablets[2].procesador}
       })
     ])
   
-    const [memoriaRamT1, memoriaRamT2] = await Promise.all([
+    const [memoriaRamT1, memoriaRamT2, memoriaRamT3] = await Promise.all([
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[0].memoriaRam, tipo:'memoria ram'}
@@ -524,9 +566,14 @@ const compararTablets = async (req, res) => {
           raw: true,
           where: { nombre: tablets[1].memoriaRam, tipo:'memoria ram'}
       })
+      ,
+      Componente.findAll({
+          raw: true,
+          where: { nombre: tablets[2].memoriaRam, tipo:'memoria ram'}
+      })
     ]) 
   
-    const [almacenamientoT1, almacenamientoT2] = await Promise.all([
+    const [almacenamientoT1, almacenamientoT2, almacenamientoT3] = await Promise.all([
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[0].almacenamiento, tipo:'almacenamiento telefono'}
@@ -534,10 +581,14 @@ const compararTablets = async (req, res) => {
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[1].almacenamiento, tipo:'almacenamiento telefono'}
+      }),
+      Componente.findAll({
+          raw: true,
+          where: { nombre: tablets[2].almacenamiento, tipo:'almacenamiento telefono'}
       })
     ])
   
-    const [bateriaT1, bateriaT2] = await Promise.all([
+    const [bateriaT1, bateriaT2, bateriaT3] = await Promise.all([
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[0].bateria.toString()}
@@ -545,10 +596,14 @@ const compararTablets = async (req, res) => {
       Componente.findAll({
           raw: true,
           where: { nombre: tablets[1].bateria.toString()}
+      }),
+      Componente.findAll({
+          raw: true,
+          where: { nombre: tablets[1].bateria.toString()}
       })
     ])
   
-    const [camaraFT1, camaraFT2] = await Promise.all([
+    const [camaraFT1, camaraFT2, camaraFT3] = await Promise.all([
       Componente.findAll({
           raw: true,
           where : { nombre: tablets[0].camaraF, tipo: 'camara frontal'}
@@ -556,10 +611,14 @@ const compararTablets = async (req, res) => {
       Componente.findAll({
           raw: true,
           where : { nombre: tablets[1].camaraF, tipo: 'camara frontal'}
-      })    
+      }),
+      Componente.findAll({
+          raw: true,
+          where : { nombre: tablets[1].camaraF, tipo: 'camara frontal'}
+      })        
     ])
   
-    const [camaraTT1, camaraTT2] = await Promise.all([
+    const [camaraTT1, camaraTT2, camaraTT3] = await Promise.all([
       Componente.findAll({
           raw: true,
           where : { nombre: tablets[0].camaraT, tipo: 'camara trasera'}
@@ -567,19 +626,23 @@ const compararTablets = async (req, res) => {
       Componente.findAll({
           raw: true,
           where : { nombre: tablets[1].camaraT, tipo: 'camara trasera'}
-      })    
+      }),
+      Componente.findAll({
+          raw: true,
+          where : { nombre: tablets[1].camaraT, tipo: 'camara trasera'}
+      })   
     ])
   
     res.render('comparar/compararTablet',{
       pagina: 'Comparar Tablets',
       csrfToken: req.csrfToken(),
       tablets,
-      procesadores: procesadorT1.concat(procesadorT2),
-      memoriasRam: memoriaRamT1.concat(memoriaRamT2),
-      almacenamiento: almacenamientoT1.concat(almacenamientoT2),
-      baterias: bateriaT1.concat(bateriaT2),
-      camarasF: camaraFT1.concat(camaraFT2),
-      camarasT: camaraTT1.concat(camaraTT2),
+      procesadores: procesadorT1.concat(procesadorT2).concat(procesadorT3),
+      memoriasRam: memoriaRamT1.concat(memoriaRamT2).concat(memoriaRamT3),
+      almacenamiento: almacenamientoT1.concat(almacenamientoT2).concat(almacenamientoT3),
+      baterias: bateriaT1.concat(bateriaT2).concat(bateriaT3),
+      camarasF: camaraFT1.concat(camaraFT2).concat(camaraFT2),
+      camarasT: camaraTT1.concat(camaraTT2).concat(camaraTT3),
       token: _token === undefined || _token === ''
     })
 }

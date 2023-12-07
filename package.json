@@ -23,6 +23,7 @@
   "author": "braviki92821",
   "license": "ISC",
   "dependencies": {
+    "alpinejs": "^2.8.2",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",

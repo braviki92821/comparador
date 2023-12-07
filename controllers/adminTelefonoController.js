@@ -205,7 +205,7 @@ const almacenarImagenTelefono = async (req, res) => {
 
       await telefono.save()
 
-      res.redirect('/admin/agregarTelefono')
+      res.redirect('/admin/admimistrarTelefonos?pagina=1')
 
     }catch(error){
         console.log(error)

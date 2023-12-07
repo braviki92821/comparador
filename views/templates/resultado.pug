@@ -1,36 +1,39 @@
 div(class="bg-white border border-x-gray-950 mt-5")
-        div(class="p-5 space-y-3")
-            h3(class="text-2xl font-bold") Caracteristicas
-            p(class="text-sm text-gray-800 ") Procesador:     
-                span(class="text-black font-bold")= laptops[n].procesador
-                span(class="text-black font-bold")=` / Puntos: ${procesadores[n].valor}`
-                button(type="button" class="cursor-pointer modal-procesador text-black") ver Detalles de componente
-            p(class="text-sm text-gray-800") Grafica: 
-                span(class="text-black font-bold")= laptops[n].grafica
-                span(class="text-black font-bold")=` / Puntos: ${graficas[n].valor}`
-                button(type="button" class="cursor-pointer modal-tarjeta-grafica text-black") ver Detalles de componente
-            p(class="text-sm text-gray-800") Memoria Ram: 
-                span(class="text-black font-bold")= laptops[n].memoriaRam
-                span(class="text-black font-bold")=` / Puntos: ${memoriasRam[n].valor}`
-                button(type="button" class="cursor-pointer modal-memoriaRam text-black") ver Detalles de componente
-            p(class="text-sm text-gray-800") Almacenamiento: 
-                span(class="text-black font-bold")= laptops[n].almacenamiento
-                span(class="text-black font-bold")=` / Puntos: ${almacenamiento[n].valor}`
-            p(class="text-sm text-gray-800") Bateria: 
-                span(class="text-black font-bold")= laptops[n].bateria
-                span(class="text-black font-bold")=` / Puntos: ${baterias[n].valor}`
-            p(class="text-sm text-gray-800") Interfaz: 
-                span(class="text-black font-bold")= laptops[n].interfaz
-                span(class="text-black font-bold")=` / Puntos: ${interfaces[n].valor}`
-            p(class="text-sm text-gray-800") Sistema Operativo: 
-                span(class="text-black font-bold")= laptops[n].sistemaOperativo.nombre
-            p(class="text-sm text-gray-800") Puntos Totales: 
-                span(class="text-black font-bold")=` ${(procesadores[n].valor + graficas[n].valor + memoriasRam[n].valor + almacenamiento[n].valor + baterias[n].valor + interfaces[n].valor)}`
-            - var puntos = procesadores[n].valor + graficas[n].valor + memoriasRam[n].valor + almacenamiento[n].valor + baterias[n].valor + interfaces[n].valor                          
-            //- if () > (procesadores[l2].valor + graficas[l2].valor + memoriasRam[l2].valor + almacenamiento[l2].valor + baterias[l2].valor + interfaces[l2].valor)
-            //-     p(class="text-black font-bold") Ganador
-            //- else
-            //-     p(class="text-black font-bold") Perdedor
-            //- - var pl1 = procesadores[l1].valor + graficas[l1].valor + memoriasRam[l1].valor + almacenamiento[l1].valor + baterias[l1].valor + interfaces[l1].valor
-            //- - var pl2 = procesadores[l2].valor + graficas[l2].valor + memoriasRam[l2].valor + almacenamiento[l2].valor + baterias[l2].valor + interfaces[l2].valor
-
+    div(class="p-5 space-y-3")
+        h3(class="text-2xl font-bold") Caracteristicas
+        p(class="text-sm text-gray-800 ") Procesador:     
+            span(class="text-black font-bold")= laptops[n].procesador
+            span(class="text-black font-bold")=` / Puntos: ${procesadores[n].valor}`
+            button(type="button" data-puntos-procesador=`${procesadores[n].valor}` class="cursor-pointer modal-procesador text-black") ver Detalles de componente
+        p(class="text-sm text-gray-800") Grafica: 
+            span(class="text-black font-bold")= laptops[n].grafica
+            span(class="text-black font-bold")=` / Puntos: ${graficas[n].valor}`
+            button(type="button" data-puntos-grafica=`${graficas[n].valor}` class="cursor-pointer modal-tarjeta-grafica text-black") ver Detalles de componente
+        p(class="text-sm text-gray-800") Memoria Ram: 
+            span(class="text-black font-bold")= laptops[n].memoriaRam
+            span(class="text-black font-bold")=` / Puntos: ${memoriasRam[n].valor}`
+            button(type="button" data-puntos-memoria=`${memoriasRam[n].valor}` class="cursor-pointer modal-memoriaRam text-black") ver Detalles de componente
+        p(class="text-sm text-gray-800") Almacenamiento: 
+            span(class="text-black font-bold")= laptops[n].almacenamiento
+            span(class="text-black font-bold")=` / Puntos: ${almacenamiento[n].valor}`
+            button(type="button" data-puntos-almacenamiento=`${almacenamiento[n].valor}` class="cursor-pointer modal-almacenamiento text-black") ver Detalles de componente
+        p(class="text-sm text-gray-800") Bateria: 
+            span(class="text-black font-bold")= laptops[n].bateria
+            span(class="text-black font-bold")=` / Puntos: ${baterias[n].valor}`
+        p(class="text-sm text-gray-800") Interfaz: 
+            span(class="text-black font-bold")= laptops[n].interfaz
+            span(class="text-black font-bold")=` / Puntos: ${interfaces[n].valor}`
+        p(class="text-sm text-gray-800") Sistema Operativo: 
+            span(class="text-black font-bold")= laptops[n].sistemaOperativo.nombre
+        p(class="text-sm text-gray-800") Puntos Totales: 
+            span(class="text-black font-bold")=` ${(procesadores[n].valor + graficas[n].valor + memoriasRam[n].valor + almacenamiento[n].valor + baterias[n].valor + interfaces[n].valor)}`
+        - var puntos = procesadores[n].valor + graficas[n].valor + memoriasRam[n].valor + almacenamiento[n].valor + baterias[n].valor + interfaces[n].valor                          
+            if puntos < 25
+                p(class="text-sm text-gray-800") Puede ser adecuado para:
+                    span(class="text-black font-bold") Docentes, juegos de graficos bajos
+            else if puntos < 40
+                p(class="text-sm text-gray-800") Puede ser adecuado para:
+                    span(class="text-black font-bold") Docentes, Diseñadores, juegos de graficos medios
+            else if puntos < 60
+                p(class="text-sm text-gray-800") Puede ser adecuado para: 
+                    span(class="text-black font-bold") Docentes, Diseñadores, Programadores, juegos de graficos altos

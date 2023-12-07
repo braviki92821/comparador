@@ -65,7 +65,7 @@ router.post('/admin/agregarTelefono',
             body('tienda').isNumeric().withMessage('Seleccione tienda'), 
             protegerRuta, guardarTelefono)
 
-router.get('/admin/agregar-imagen-telefono/:id', agregarImagenTelefono)
+router.get('/admin/agregar-imagen-telefono/:id', protegerRuta, agregarImagenTelefono)
 router.post('/admin/agregar-imagen-telefono/:id', protegerRuta, upload.single('imagen'), almacenarImagenTelefono)
 
 router.get('/admin/editarTelefono/:id', protegerRuta, editarTelefono)

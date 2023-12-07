@@ -1,0 +1,23 @@
+div(class="bg-white border border-x-gray-950 mt-5")
+    div(class="p-5 space-y-3")
+        h3(class="text-2xl font-bold") Caracteristicas
+        p(class="text-sm text-gray-600") Procesador:     
+            span(class="text-black font-bold")= tablets[n].procesador
+            span(class="text-black font-bold")=` / Puntos: ${procesadores[n].valor}`
+        p(class="text-sm text-gray-600") Memoria Ram: 
+            span(class="text-black font-bold")= tablets[n].memoriaRam
+            span(class="text-black font-bold")=` / Puntos: ${memoriasRam[n].valor}`
+        p(class="text-sm text-gray-600") Almacenamiento: 
+            span(class="text-black font-bold")= tablets[n].almacenamiento
+            span(class="text-black font-bold")=` / Puntos: ${almacenamiento[n].valor}`
+        p(class="text-sm text-gray-600") Bateria: 
+            span(class="text-black font-bold")= tablets[n].bateria
+            span(class="text-black font-bold")=` / Puntos: ${baterias[n].valor}`
+        p(class="text-sm text-gray-600") Camara Frontal: 
+            span(class="text-black font-bold")= tablets[n].camaraF
+            span(class="text-black font-bold")=` / Puntos: ${camarasF[0].valor}`
+        p(class="text-sm text-gray-600") Camara Trasera: 
+            span(class="text-black font-bold")= tablets[n].camaraT
+            span(class="text-black font-bold")=` / Puntos: ${camarasT[n].valor}`
+        p(class="text-sm text-gray-600") Sistema Operativo: 
+            span(class="text-black font-bold")= tablets[n].sistemaOperativo.nombre

@@ -45,7 +45,7 @@
 
         compararLaptop.push( laptopId )
 
-        if(compararLaptop.length === 3){
+        if(compararLaptop.length > 2){
             btnComparar.classList.remove('hidden')
         }else{
             btnComparar.classList.add('hidden')
@@ -65,7 +65,7 @@
             document.cookie = 'compararLaptop='+compararLaptop.toString()+';'
             localStorage.removeItem('compararLaptop')
             localStorage.setItem('compararLaptop',compararLaptop.toString())
-            if(compararLaptop.length === 3 ){
+            if(compararLaptop.length > 2 ){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')
@@ -87,13 +87,13 @@
         if(!compararTelefono.includes(telefonoId)){
           
 
-        if(compararTelefono.length === 2){
-            return alert('Solo puedes agregar 2 Telefonos para comparar')
+        if(compararTelefono.length === 3){
+            return alert('Solo puedes agregar 3 Telefonos para comparar')
         }
 
         compararTelefono.push( telefonoId )
 
-        if(compararTelefono.length > 1){
+        if(compararTelefono.length > 2){
             btnComparar.classList.remove('hidden')
         }else{
             btnComparar.classList.add('hidden')
@@ -113,7 +113,7 @@
             document.cookie = 'compararTelefono='+compararTelefono.toString()+';'
             localStorage.removeItem('compararTelefono')
             localStorage.setItem('compararTelefono',compararTelefono.toString())
-            if(compararTelefono.length > 1){
+            if(compararTelefono.length > 2){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')
@@ -133,13 +133,13 @@
         
         if(!compararTablet.includes(tabletId)){
           
-        if(compararTablet.length === 2){
-            return alert('Solo puedes agregar 2 Telefonos para comparar')
+        if(compararTablet.length === 3){
+            return alert('Solo puedes agregar 3 Tablets para comparar')
         }
 
         compararTablet.push( tabletId )
 
-        if(compararTablet.length > 1){
+        if(compararTablet.length > 2){
             btnComparar.classList.remove('hidden')
         }else{
             btnComparar.classList.add('hidden')
@@ -159,7 +159,7 @@
             document.cookie = 'compararTablet='+compararTablet.toString()+';'
             localStorage.removeItem('compararTablet')
             localStorage.setItem('compararTablet',compararTablet.toString())
-            if(compararTablet.length > 1){
+            if(compararTablet.length > 2){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')
@@ -179,7 +179,7 @@
         }else{
             compararLaptop = localStorage.getItem('compararLaptop').split(',')
 
-            if(compararLaptop.length > 1){
+            if(compararLaptop.length > 2){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')
@@ -207,7 +207,7 @@
         
             compararTelefono = localStorage.getItem('compararTelefono').split(',')
 
-            if(compararTelefono.length > 1){
+            if(compararTelefono.length > 2){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')
@@ -234,7 +234,7 @@
         
             compararTablet = localStorage.getItem('compararTablet').split(',')
 
-            if(compararTablet.length > 1){
+            if(compararTablet.length > 2){
                 btnComparar.classList.remove('hidden')
             }else{
                 btnComparar.classList.add('hidden')
