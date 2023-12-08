@@ -10,7 +10,7 @@ const formularioLogin = (req, res) => {
     });
 }
 
-const autenticar = async(req,res) => {
+const autenticar = async (req,res) => {
   await check("email")
   .isEmail()
   .notEmpty()
@@ -28,7 +28,7 @@ await check("password")
       pagina:'Iniciar Sesion',
       csrfToken: req.csrfToken(),
       errores: resultado.array(),
-      token: _token === undefined || _token === ''
+      //token: _token === undefined || _token === ''
     })
   }
 
