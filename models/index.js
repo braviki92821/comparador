@@ -10,7 +10,7 @@ import MarcaTyT from './MarcaTyT.js'
 import Calificacion from './Calificacion.js'
 import Favorito from './Favorito.js'
 
-
+//las relaciones entre las tablas
 Laptop.belongsTo(SO, {foraingKey: 'sistemaId'})
 Laptop.belongsTo(MarcaL, {foraingKey: 'marcaId'})
 Laptop.belongsTo(Tienda, {foraingKey: 'tiendaId'})

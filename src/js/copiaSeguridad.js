@@ -69,7 +69,6 @@ async function subirMasivaLaptop(){
     const input = document.createElement("input")
     input.type = 'file'
     input.accept = '.json'
-    //input.click()
     input.addEventListener('click',
          input.click(),
          input.addEventListener('change', e =>{
